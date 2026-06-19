@@ -5,9 +5,9 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
-  devIndicators: {
-    appIsrStatus: false,
-    buildActivity: false,
+  // Pin the workspace root so the stray parent lockfile doesn't get picked up.
+  turbopack: {
+    root: __dirname,
   },
 };
 

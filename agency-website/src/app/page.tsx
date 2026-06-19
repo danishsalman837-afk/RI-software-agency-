@@ -57,15 +57,30 @@ export default function Home() {
             </div>
             
             {/* Abstract Hero Graphic */}
-            <FadeIn delay={0.5} direction="left" className="hidden lg:block relative h-[700px] w-full">
-              <div className="absolute inset-0 bg-gradient-to-br from-[#6c5ce7]/10 to-[#00cec9]/10 rounded-[3rem] border border-white/5 backdrop-blur-3xl overflow-hidden glass shadow-2xl">
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] animate-[spin_30s_linear_infinite]">
-                  <div className="absolute inset-0 bg-[conic-gradient(from_0deg_at_50%_50%,rgba(108,92,231,0.15)_0deg,transparent_60deg,transparent_300deg,rgba(0,206,201,0.15)_360deg)]" />
+            <FadeIn delay={0.5} direction="left" className="hidden lg:block relative h-[600px] w-full">
+              <div className="absolute inset-0 bg-gradient-to-br from-[#6c5ce7]/15 to-[#00cec9]/10 rounded-[3rem] border border-white/10 overflow-hidden glass shadow-2xl">
+                {/* Rotating conic glow */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[160%] h-[160%] animate-[spin_30s_linear_infinite]">
+                  <div className="absolute inset-0 bg-[conic-gradient(from_0deg_at_50%_50%,rgba(108,92,231,0.35)_0deg,transparent_90deg,transparent_270deg,rgba(0,206,201,0.30)_360deg)]" />
                 </div>
-                {/* Floating elements */}
-                <div className="absolute top-1/4 left-1/4 w-40 h-40 bg-white/5 rounded-3xl border border-white/10 backdrop-blur-xl animate-[bounce_6s_infinite] shadow-xl" />
-                <div className="absolute bottom-1/3 right-1/4 w-32 h-32 bg-gradient-to-br from-[#6c5ce7]/20 to-transparent rounded-full border border-white/10 backdrop-blur-xl animate-[bounce_7s_infinite_1s]" />
-                <div className="absolute top-1/3 right-1/3 w-20 h-20 bg-gradient-to-tr from-[#fd79a8] to-[#fab1a0] rounded-2xl opacity-60 blur-md animate-[ping_4s_infinite]" />
+                {/* Center orb + RI badge */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-52 h-52 rounded-full bg-gradient-to-br from-[#6c5ce7] to-[#00cec9] blur-3xl opacity-40" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-28 h-28 rounded-3xl bg-gradient-to-br from-[#6c5ce7] to-[#00cec9] flex items-center justify-center text-white text-4xl font-extrabold shadow-2xl border border-white/20">
+                  RI
+                </div>
+                {/* Floating tech cards */}
+                <div className="absolute top-[14%] left-[12%] w-20 h-20 rounded-2xl glass border border-white/15 flex items-center justify-center text-[#a29bfe] shadow-xl animate-[bounce_6s_ease-in-out_infinite]">
+                  <Icon name="code" className="w-9 h-9" />
+                </div>
+                <div className="absolute bottom-[16%] right-[13%] w-20 h-20 rounded-2xl glass border border-white/15 flex items-center justify-center text-[#00cec9] shadow-xl animate-[bounce_7s_ease-in-out_infinite]">
+                  <Icon name="zap" className="w-9 h-9" />
+                </div>
+                <div className="absolute top-[20%] right-[15%] w-16 h-16 rounded-2xl glass border border-white/15 flex items-center justify-center text-[#fd79a8] shadow-xl animate-[bounce_8s_ease-in-out_infinite]">
+                  <Icon name="rocket" className="w-8 h-8" />
+                </div>
+                <div className="absolute bottom-[24%] left-[15%] w-16 h-16 rounded-2xl glass border border-white/15 flex items-center justify-center text-[#fdcb6e] shadow-xl animate-[bounce_9s_ease-in-out_infinite]">
+                  <Icon name="palette" className="w-8 h-8" />
+                </div>
               </div>
             </FadeIn>
           </div>
@@ -192,12 +207,10 @@ const buildSuccess = async (client: Client) => {
               <FadeIn key={member.name} delay={i * 0.2} direction="up" className="w-full max-w-sm text-center">
                 <div className="relative group mx-auto w-56 h-56 md:w-72 md:h-72 mb-10">
                   <div className="absolute inset-0 bg-gradient-to-br from-[#6c5ce7] to-[#00cec9] rounded-full blur-[40px] opacity-20 group-hover:opacity-40 group-hover:scale-110 transition-all duration-700" />
-                  <div className="relative w-full h-full rounded-full border border-white/10 bg-[#1a1a2e] flex items-center justify-center overflow-hidden glass z-10 shadow-2xl">
-                    {member.image === 'geometry-1' ? (
-                      <svg className="w-32 h-32 text-[#6c5ce7] group-hover:scale-110 group-hover:rotate-12 transition-transform duration-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 2 22 22 22"></polygon></svg>
-                    ) : (
-                      <svg className="w-32 h-32 text-[#00cec9] group-hover:scale-110 group-hover:-rotate-12 transition-transform duration-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
-                    )}
+                  <div className="relative w-full h-full rounded-full border border-white/10 bg-gradient-to-br from-[#1a1a2e] to-[#0d0d1a] flex items-center justify-center overflow-hidden glass z-10 shadow-2xl">
+                    <span className="text-6xl md:text-7xl font-extrabold bg-gradient-to-br from-[#a29bfe] to-[#00cec9] bg-clip-text text-transparent group-hover:scale-110 transition-transform duration-500">
+                      {member.name.split(' ').map((n) => n[0]).join('')}
+                    </span>
                   </div>
                 </div>
                 <h4 className="text-3xl font-bold text-white mb-4">{member.name}</h4>

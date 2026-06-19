@@ -18,10 +18,6 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    setIsMobileOpen(false);
-  }, [pathname]);
-
-  useEffect(() => {
     if (isMobileOpen) {
       document.body.style.overflow = "hidden";
     } else {
@@ -144,6 +140,7 @@ export default function Navbar() {
                   >
                     <Link
                       href={link.href}
+                      onClick={() => setIsMobileOpen(false)}
                       className={`block px-6 py-4 text-center text-lg font-medium rounded-xl transition-all duration-300 ${
                         isActive
                           ? "bg-[#6c5ce7]/20 text-white border border-[#6c5ce7]/30"
@@ -163,6 +160,7 @@ export default function Navbar() {
               >
                 <Link
                   href="/contact"
+                  onClick={() => setIsMobileOpen(false)}
                   className="block px-6 py-4 text-center bg-gradient-to-r from-[#6c5ce7] to-[#a29bfe] text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-[#6c5ce7]/30 transition-all duration-300"
                 >
                   Get Started →

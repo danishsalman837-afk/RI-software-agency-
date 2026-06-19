@@ -24,7 +24,7 @@ export default function ContactPage() {
                   Get in touch with our team
                 </h2>
                 <p className="text-[#8888a0] text-xl mb-16 leading-relaxed font-light">
-                  Whether you have a complete project specification or just a rough idea on a napkin, we're here to help you bring it to life. We work with clients globally.
+                  Whether you have a complete project specification or just a rough idea on a napkin, we&apos;re here to help you bring it to life. We work with clients globally.
                 </p>
 
                 <div className="space-y-10">

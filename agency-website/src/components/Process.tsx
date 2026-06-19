@@ -1,4 +1,5 @@
-import { Section, FadeIn, StaggerContainer, StaggerItem, SectionHeading } from "@/components";
+import { Section, FadeIn, StaggerContainer, StaggerItem } from "./Animations";
+import SectionHeading from "./SectionHeading";
 import { Icon } from "./Icon";
 import { PROCESS_STEPS } from "@/data";
 

@@ -1,12 +1,12 @@
 import Link from "next/link";
-import { FadeIn, Section, StaggerContainer, StaggerItem, InteractiveServices } from "@/components";
+import { FadeIn, Section, StaggerContainer, StaggerItem, InteractiveServices, LogoWall, Process, Testimonials, IconTile, Icon } from "@/components";
 import { SERVICES, PORTFOLIO_ITEMS, STATS, WHY_CHOOSE_US, TEAM } from "@/data";
 
 export default function Home() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center pt-48 pb-32 overflow-hidden">
+      <section className="relative min-h-screen flex items-center pt-32 md:pt-40 pb-24 overflow-hidden">
         {/* Background elements */}
         <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[#6c5ce7] opacity-10 blur-[150px] rounded-full pointer-events-none" />
         <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-[#00cec9] opacity-5 blur-[180px] rounded-full pointer-events-none" />
@@ -86,11 +86,13 @@ export default function Home() {
         </div>
       </Section>
 
+      <LogoWall />
+
       {/* Interactive Services Section */}
       <Section id="services" className="bg-[#050510] py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn className="text-center mb-20">
-            <h2 className="text-[#6c5ce7] font-bold tracking-widest uppercase text-sm mb-4 letter-spacing-[0.2em]">Our Expertise</h2>
+            <h2 className="text-[#6c5ce7] font-bold tracking-[0.2em] uppercase text-sm mb-4">Our Expertise</h2>
             <h3 className="text-4xl md:text-6xl font-bold text-white mb-6">Services We Offer</h3>
             <p className="text-[#8888a0] max-w-3xl mx-auto text-xl font-light leading-relaxed">
               We provide end-to-end digital solutions tailored to your unique business needs, ensuring high performance and exceptional user experiences.
@@ -114,16 +116,14 @@ export default function Home() {
                   Over 5 Years of Successful Delivery
                 </h3>
                 <p className="text-[#8888a0] text-xl mb-14 font-light leading-relaxed">
-                  We don't just write code; we build digital businesses. Our approach combines technical excellence with strategic business thinking.
+                  We don&apos;t just write code; we build digital businesses. Our approach combines technical excellence with strategic business thinking.
                 </p>
               </FadeIn>
 
               <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 gap-10">
                 {WHY_CHOOSE_US.slice(0, 4).map((item, index) => (
                   <StaggerItem key={index} className="flex gap-5 group">
-                    <div className="flex-shrink-0 w-14 h-14 rounded-xl bg-[#1a1a2e] border border-[#2a2a40] flex items-center justify-center text-2xl group-hover:scale-110 group-hover:border-[#6c5ce7] transition-all duration-300 shadow-lg">
-                      {item.icon}
-                    </div>
+                    <IconTile name={item.icon} className="group-hover:scale-110 group-hover:border-[#6c5ce7] shadow-lg" />
                     <div>
                       <h4 className="text-white text-lg font-bold mb-3 group-hover:text-[#6c5ce7] transition-colors">{item.title}</h4>
                       <p className="text-[#8888a0] leading-relaxed">{item.description}</p>
@@ -173,6 +173,8 @@ const buildSuccess = async (client: Client) => {
           </div>
         </div>
       </Section>
+
+      <Process />
 
       {/* Team / Leadership Section */}
       <Section className="bg-[#050510] py-40">
@@ -231,7 +233,7 @@ const buildSuccess = async (client: Client) => {
 
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             {PORTFOLIO_ITEMS.slice(0, 3).map((item, index) => (
-              <StaggerItem key={item.id} className={index === 1 ? "md:translate-y-12" : index === 2 ? "lg:translate-y-24" : ""}>
+              <StaggerItem key={item.id} className={index === 1 ? "md:translate-y-8" : ""}>
                 <Link href="/portfolio" className="group block h-full">
                   <div className="relative rounded-[2rem] overflow-hidden mb-8 aspect-[4/5] bg-[#1a1a2e] shadow-2xl transition-transform duration-500 group-hover:-translate-y-4">
                     {/* Fallback pattern */}
@@ -286,8 +288,20 @@ const buildSuccess = async (client: Client) => {
               </StaggerItem>
             ))}
           </StaggerContainer>
+
+          <FadeIn className="mt-16 text-center">
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-gradient-to-r from-[#6c5ce7] to-[#00cec9] text-white font-semibold hover:shadow-[0_0_40px_rgba(108,92,231,0.4)] hover:-translate-y-1 transition-all duration-300"
+            >
+              Start your project
+              <Icon name="arrow-right" className="w-5 h-5" />
+            </Link>
+          </FadeIn>
         </div>
       </Section>
+
+      <Testimonials />
 
       {/* CTA Section */}
       <Section className="relative overflow-hidden py-40">
@@ -300,7 +314,7 @@ const buildSuccess = async (client: Client) => {
           <FadeIn>
             <h2 className="text-5xl md:text-7xl font-extrabold mb-8 tracking-tight drop-shadow-xl">Ready to Build Something Amazing?</h2>
             <p className="text-2xl md:text-3xl text-white/90 mb-12 font-light max-w-3xl mx-auto drop-shadow-md">
-              Let's turn your vision into a reality. Our team of experts is ready to help you scale your business to new heights.
+              Let&apos;s turn your vision into a reality. Our team of experts is ready to help you scale your business to new heights.
             </p>
             <Link
               href="/contact"

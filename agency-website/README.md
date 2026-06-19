@@ -1,8 +1,31 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# RI Software Agency
 
-## Getting Started
+RI Software Agency is a modern, premium digital solutions agency website. We build scalable digital solutions, from web and mobile apps to AI integrations. Partner with us for cutting-edge software development.
 
-First, run the development server:
+## 🚀 Technologies
+
+This project is built with the latest modern web technologies:
+
+- [Next.js](https://nextjs.org/) (App Router, Turbopack)
+- [React](https://react.dev/) 19
+- [Tailwind CSS](https://tailwindcss.com/) v4
+- [Framer Motion](https://www.framer.com/motion/) (Animations & Micro-interactions)
+- [EmailJS](https://www.emailjs.com/) (Contact Form)
+- [Lucide React](https://lucide.dev/) (Icons)
+
+## 💻 Getting Started
+
+First, install the dependencies:
+
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+```
+
+Then, run the development server:
 
 ```bash
 npm run dev
@@ -10,39 +33,32 @@ npm run dev
 yarn dev
 # or
 pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📧 Contact Form Setup (EmailJS)
 
-## Contact form (EmailJS)
+The contact form is fully functional and uses [EmailJS](https://www.emailjs.com/). 
 
-The contact form uses [EmailJS](https://www.emailjs.com/). Copy `.env.local.example`
-to `.env.local` and fill in:
+1. Copy `.env.local.example` to `.env.local`
+2. Fill in your EmailJS credentials:
 
-- `NEXT_PUBLIC_EMAILJS_SERVICE_ID`
-- `NEXT_PUBLIC_EMAILJS_TEMPLATE_ID`
-- `NEXT_PUBLIC_EMAILJS_PUBLIC_KEY`
+```env
+NEXT_PUBLIC_EMAILJS_SERVICE_ID=your_service_id
+NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=your_template_id
+NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=your_public_key
+```
 
-Your EmailJS template should reference `{{name}}`, `{{email}}`, and `{{message}}`.
-Without these vars the form falls back to a simulated success (useful in development).
+Your EmailJS template should reference `{{name}}`, `{{email}}`, and `{{message}}`. Without these variables, the form falls back to a simulated success state (useful in development).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📄 Scripts
 
-## Learn More
+- `npm run dev`: Starts the development server using Turbopack
+- `npm run build`: Creates an optimized production build
+- `npm run start`: Starts the production server
+- `npm run lint`: Runs ESLint
 
-To learn more about Next.js, take a look at the following resources:
+## 🌐 Deployment
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new) from the creators of Next.js.

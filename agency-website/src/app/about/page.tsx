@@ -1,4 +1,5 @@
-import { PageHeader, Section, FadeIn, StaggerContainer, StaggerItem } from "@/components";
+import { PageHeader, Section, FadeIn, StaggerContainer, StaggerItem, IconTile } from "@/components";
+import { CORE_VALUES } from "@/data";
 
 export const metadata = {
   title: "About Us | RI Software Agency",
@@ -19,11 +20,12 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             <FadeIn direction="right" className="order-2 lg:order-1 relative h-[600px] rounded-[3rem] overflow-hidden gradient-border p-1 shadow-[0_0_50px_rgba(108,92,231,0.15)]">
               <div className="absolute inset-1 bg-[#1a1a2e] rounded-[2.8rem] overflow-hidden">
-                <div className="absolute inset-0 opacity-40 bg-[url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2850&q=80')] bg-cover bg-center mix-blend-luminosity hover:scale-105 transition-transform duration-1000" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(108,92,231,0.25),transparent_55%),radial-gradient(circle_at_80%_80%,rgba(0,206,201,0.2),transparent_55%)]" />
+                <div className="absolute inset-0 opacity-[0.08] bg-[linear-gradient(rgba(255,255,255,0.6)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.6)_1px,transparent_1px)] [background-size:40px_40px]" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#050510] via-[#050510]/50 to-transparent" />
                 <div className="absolute bottom-10 left-10 right-10">
                   <div className="glass p-8 rounded-2xl backdrop-blur-xl border border-white/20 shadow-2xl">
-                    <p className="text-2xl font-medium text-white mb-3 italic">"Innovation distinguishes between a leader and a follower."</p>
+                    <p className="text-2xl font-medium text-white mb-3 italic">&ldquo;Innovation distinguishes between a leader and a follower.&rdquo;</p>
                     <p className="text-[#8888a0] font-bold">— Steve Jobs</p>
                   </div>
                 </div>
@@ -57,32 +59,13 @@ export default function AboutPage() {
           </FadeIn>
 
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            {[
-              {
-                icon: "🎯",
-                title: "Excellence",
-                desc: "We don't settle for 'good enough'. We strive for technical perfection and pixel-perfect design in every project.",
-                color: "from-[#6c5ce7] to-[#a29bfe]"
-              },
-              {
-                icon: "🤝",
-                title: "Partnership",
-                desc: "We view our clients as long-term partners. Your success is our success. We communicate transparently and build trust.",
-                color: "from-[#00cec9] to-[#55efc4]"
-              },
-              {
-                icon: "🚀",
-                title: "Innovation",
-                desc: "Technology evolves rapidly. We constantly learn and adapt, bringing the most advanced solutions to the table.",
-                color: "from-[#fd79a8] to-[#fab1a0]"
-              }
-            ].map((value, i) => (
-              <StaggerItem key={i}>
+            {CORE_VALUES.map((value) => (
+              <StaggerItem key={value.title}>
                 <div className="glass p-10 rounded-3xl h-full relative overflow-hidden group hover:-translate-y-2 transition-transform duration-500 shadow-xl">
-                  <div className={`absolute -top-12 -right-12 w-40 h-40 bg-gradient-to-br ${value.color} opacity-20 blur-[40px] group-hover:scale-150 group-hover:opacity-30 transition-all duration-700`} />
-                  <div className="text-5xl mb-8 relative z-10">{value.icon}</div>
+                  <div className={`absolute -top-12 -right-12 w-40 h-40 bg-gradient-to-br ${value.gradient} opacity-20 blur-[40px] group-hover:scale-150 group-hover:opacity-30 transition-all duration-700`} />
+                  <IconTile name={value.icon} className="mb-8 relative z-10" />
                   <h4 className="text-3xl font-bold text-white mb-4 relative z-10 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-white/50 transition-all">{value.title}</h4>
-                  <p className="text-[#8888a0] text-lg leading-relaxed relative z-10 font-light">{value.desc}</p>
+                  <p className="text-[#8888a0] text-lg leading-relaxed relative z-10 font-light">{value.description}</p>
                 </div>
               </StaggerItem>
             ))}

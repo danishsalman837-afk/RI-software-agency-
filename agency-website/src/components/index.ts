@@ -14,3 +14,6 @@ export { default as InteractiveServices } from './InteractiveServices';
 
 export { Icon, IconTile, iconMap, SocialIcon, socialIconMap } from './Icon';
 export type { IconKey, SocialKey } from './Icon';
+
+export { default as Eyebrow } from './Eyebrow';
+export { default as SectionHeading } from './SectionHeading';

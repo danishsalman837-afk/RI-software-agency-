@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { NAV_LINKS } from "@/data";
+import { NAV_LINKS, SOCIAL_LINKS } from "@/data";
+import { SocialIcon } from "./Icon";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -28,16 +29,16 @@ export default function Footer() {
             </p>
             {/* Social Links */}
             <div className="flex gap-4">
-              {["Twitter", "LinkedIn", "GitHub", "Dribbble"].map((social) => (
+              {SOCIAL_LINKS.map((social) => (
                 <a
-                  key={social}
-                  href="#"
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-10 h-10 rounded-full bg-[#1a1a2e] border border-[#2a2a40] flex items-center justify-center text-[#8888a0] hover:text-white hover:border-[#6c5ce7] hover:bg-[#6c5ce7]/10 transition-all duration-300"
-                  aria-label={social}
+                  aria-label={social.label}
                 >
-                  <span className="sr-only">{social}</span>
-                  {/* Dummy icons */}
-                  <div className="w-4 h-4 bg-current rounded-sm opacity-50" />
+                  <SocialIcon name={social.icon} className="w-4 h-4" />
                 </a>
               ))}
             </div>

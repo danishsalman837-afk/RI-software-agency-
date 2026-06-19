@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ServiceCard } from "@/types";
+import { Icon } from "./Icon";
 
 interface InteractiveServicesProps {
   services: ServiceCard[];
@@ -37,8 +38,8 @@ export default function InteractiveServices({ services }: InteractiveServicesPro
               )}
               
               <div className="relative z-10 flex items-center gap-4">
-                <div className={`text-3xl transition-transform duration-300 ${isActive ? "scale-110" : "opacity-50 grayscale"}`}>
-                  {service.icon}
+                <div className={`transition-transform duration-300 ${isActive ? "text-[#a29bfe] scale-110" : "text-[#8888a0]"}`}>
+                  <Icon name={service.icon} className="w-7 h-7" />
                 </div>
                 <h4 className={`text-xl font-bold transition-colors duration-300 ${isActive ? "text-white" : "text-[#8888a0]"}`}>
                   {service.title}
@@ -50,7 +51,7 @@ export default function InteractiveServices({ services }: InteractiveServicesPro
       </div>
 
       {/* Service Content Details */}
-      <div className="lg:col-span-7 h-[400px] lg:h-[500px]">
+      <div className="lg:col-span-7 min-h-[420px] lg:min-h-[480px]">
         <AnimatePresence mode="wait">
           <motion.div
             key={activeIndex}
@@ -66,13 +67,21 @@ export default function InteractiveServices({ services }: InteractiveServicesPro
             
             {/* Content */}
             <div className="relative z-10">
-              <div className="text-6xl mb-8 drop-shadow-2xl">{services[activeIndex].icon}</div>
+              <div className="mb-8 text-[#a29bfe]"><Icon name={services[activeIndex].icon} className="w-14 h-14" /></div>
               <h3 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
                 {services[activeIndex].title}
               </h3>
               <p className="text-xl text-[#8888a0] leading-relaxed mb-8">
                 {services[activeIndex].description}
               </p>
+              <ul className="space-y-3 mb-8">
+                {services[activeIndex].features.map((f) => (
+                  <li key={f} className="flex items-center gap-3 text-[#e8e8f0]">
+                    <Icon name="check" className="w-5 h-5 text-[#00cec9] flex-shrink-0" />
+                    {f}
+                  </li>
+                ))}
+              </ul>
               <button className={`px-8 py-4 rounded-xl font-semibold text-white bg-gradient-to-r ${services[activeIndex].gradient} hover:shadow-[0_0_30px_rgba(255,255,255,0.1)] transition-all duration-300 hover:scale-105 inline-flex items-center gap-2 group`}>
                 Explore Service
                 <svg className="group-hover:translate-x-1 transition-transform" width="20" height="20" viewBox="0 0 16 16" fill="none">

@@ -1,6 +1,7 @@
 import { Section, FadeIn, StaggerContainer, StaggerItem } from "./Animations";
 import SectionHeading from "./SectionHeading";
 import { TESTIMONIALS } from "@/data";
+import { getInitials } from "@/lib/utils";
 
 export default function Testimonials() {
   return (
@@ -17,7 +18,7 @@ export default function Testimonials() {
 
         <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {TESTIMONIALS.map((t) => (
-            <StaggerItem key={t.name}>
+            <StaggerItem key={t.id}>
               <figure className="h-full glass rounded-3xl p-8 flex flex-col">
                 <div className="flex gap-1 mb-5" aria-hidden="true">
                   {Array.from({ length: 5 }).map((_, i) => (
@@ -31,7 +32,7 @@ export default function Testimonials() {
                 </blockquote>
                 <figcaption className="flex items-center gap-4 border-t border-[#2a2a40] pt-6">
                   <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#6c5ce7] to-[#00cec9] flex items-center justify-center text-white font-bold">
-                    {t.name.split(" ").map((n) => n[0]).join("")}
+                    {getInitials(t.name)}
                   </div>
                   <div>
                     <div className="text-white font-bold">{t.name}</div>

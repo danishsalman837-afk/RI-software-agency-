@@ -40,6 +40,20 @@
 
 ---
 
+### Task 0: Pre-implementation setup (globals.css & next.config.ts)
+
+**Files:**
+- Modify: `src/app/globals.css`
+- Modify: `next.config.ts`
+
+- [ ] **Step 1: Modify globals.css**
+Update spacing rhythm, universal reset adjustments, and type/motion utilities.
+
+- [ ] **Step 2: Modify next.config.ts**
+Configure Turbopack root configuration with __dirname and toggle devIndicators.
+
+---
+
 ### Task 1: Add lucide-react + Icon system
 
 **Files:**
@@ -55,7 +69,7 @@
 
 - [ ] **Step 1: Install lucide-react**
 
-Run: `npm install lucide-react`
+Run: `npm install lucide-react @emailjs/browser`
 Expected: adds `lucide-react` to `package.json` dependencies, no errors.
 
 - [ ] **Step 2: Create `src/components/Icon.tsx`**
@@ -1220,7 +1234,7 @@ git commit -m "chore: final verification fixes for frontend polish pass"
 
 ## Self-Review
 
-**Spec coverage:** B1–B9 → Tasks 4,5,6,7,9,11,12; design-system foundation → Tasks 1,3; per-page polish → Tasks 9–12; new sections + data → Tasks 2,8,9; lead capture → Task 7; responsive/a11y → Tasks 3,4,5,13; verification → Task 13. All §4–§10 spec items mapped.
+**Spec coverage:** B1–B9 → Tasks 4,5,6,7,9,11,12; design-system foundation → Tasks 1,3; per-page polish → Tasks 9–12; new sections + data → Tasks 2,8,9; lead capture → Task 7; responsive/a11y → Tasks 3,4,5,13; verification → Task 13. All §4–§10 spec items mapped. Note that globals.css and next.config.ts modifications referenced in §12 are not covered by the current task assignments and should be completed separately or added as pre-implementation setup steps.
 
 **Placeholder scan:** No "TBD"/"implement later"; all code shown inline; placeholder *content* (testimonials/logos/socials) is intentional and `TODO`-marked per spec.
 

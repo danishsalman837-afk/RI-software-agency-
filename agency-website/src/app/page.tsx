@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { FadeIn, Section, StaggerContainer, StaggerItem, InteractiveServices, LogoWall, Process, Testimonials, IconTile, Icon } from "@/components";
 import { SERVICES, PORTFOLIO_ITEMS, STATS, WHY_CHOOSE_US, TEAM } from "@/data";
+import { getInitials } from "@/lib/utils";
 
 export default function Home() {
   return (
@@ -209,7 +210,7 @@ const buildSuccess = async (client: Client) => {
                   <div className="absolute inset-0 bg-gradient-to-br from-[#6c5ce7] to-[#00cec9] rounded-full blur-[40px] opacity-20 group-hover:opacity-40 group-hover:scale-110 transition-all duration-700" />
                   <div className="relative w-full h-full rounded-full border border-white/10 bg-gradient-to-br from-[#1a1a2e] to-[#0d0d1a] flex items-center justify-center overflow-hidden glass z-10 shadow-2xl">
                     <span className="text-6xl md:text-7xl font-extrabold bg-gradient-to-br from-[#a29bfe] to-[#00cec9] bg-clip-text text-transparent group-hover:scale-110 transition-transform duration-500">
-                      {member.name.split(' ').map((n) => n[0]).join('')}
+                      {getInitials(member.name)}
                     </span>
                   </div>
                 </div>

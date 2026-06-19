@@ -1,5 +1,6 @@
 import { PageHeader, Section, FadeIn, ContactForm, Icon } from "@/components";
 import { TEAM } from "@/data";
+import { getInitials } from "@/lib/utils";
 
 export const metadata = {
   title: "Contact Us | RI Software Agency",
@@ -34,7 +35,7 @@ export default function ContactPage() {
                   {TEAM.map((member) => (
                     <div key={member.name} className="flex items-center gap-6 p-6 rounded-2xl bg-[#0d0d1a] border border-[#2a2a40] hover:border-[#6c5ce7]/50 transition-colors group">
                       <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#6c5ce7] to-[#00cec9] flex items-center justify-center text-white text-xl font-bold shadow-lg group-hover:scale-110 transition-transform duration-300">
-                        {member.name.split(" ").map((n) => n[0]).join("")}
+                        {getInitials(member.name)}
                       </div>
                       <div>
                         <h4 className="text-white font-bold text-xl mb-1">{member.name}</h4>

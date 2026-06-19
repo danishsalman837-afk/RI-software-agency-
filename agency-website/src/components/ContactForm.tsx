@@ -31,8 +31,10 @@ export default function ContactForm() {
           console.warn(
             "EmailJS not configured — simulating success. Set NEXT_PUBLIC_EMAILJS_* env vars.",
           );
+          await new Promise((r) => setTimeout(r, 1200));
+        } else {
+          throw new Error("Email service is not configured.");
         }
-        await new Promise((r) => setTimeout(r, 1200));
       }
       setIsSuccess(true);
       formRef.current?.reset();

@@ -141,18 +141,21 @@ export const TEAM: TeamMember[] = [
 // TODO: Replace placeholder testimonials with real client quotes before launch.
 export const TESTIMONIALS: Testimonial[] = [
   {
+    id: "t1",
     quote: "RI Software rebuilt our platform from the ground up. Page loads dropped by 60% and our conversion rate climbed within the first month. They felt like part of our team.",
     name: "Sarah Chen",
     role: "VP of Product",
     company: "Northwind Labs",
   },
   {
+    id: "t2",
     quote: "The most communicative agency we've worked with. Clear timelines, no surprises, and a product that genuinely exceeded the spec. We've already signed for phase two.",
     name: "Marcus Hale",
     role: "Founder & CEO",
     company: "Cadence Health",
   },
   {
+    id: "t3",
     quote: "They translated a vague idea into a polished mobile app in ten weeks. The design quality alone won us our seed round. Cannot recommend them enough.",
     name: "Priya Nair",
     role: "Co-Founder",

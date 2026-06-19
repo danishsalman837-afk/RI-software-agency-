@@ -1,14 +1,17 @@
 // Shared TypeScript types for the agency website
 
+import type { IconKey, SocialKey } from "@/components/Icon";
+
 export interface NavLink {
   label: string;
   href: string;
 }
 
 export interface ServiceCard {
-  icon: string;
+  icon: IconKey;
   title: string;
   description: string;
+  features: string[];
   gradient: string;
 }
 
@@ -40,7 +43,38 @@ export interface ContactFormData {
 }
 
 export interface WhyChooseUsItem {
-  icon: string;
+  icon: IconKey;
   title: string;
   description: string;
+}
+
+export interface CoreValue {
+  icon: IconKey;
+  title: string;
+  description: string;
+  gradient: string;
+}
+
+export interface Testimonial {
+  quote: string;
+  name: string;
+  role: string;
+  company: string;
+}
+
+export interface ClientLogo {
+  name: string;
+}
+
+export interface ProcessStep {
+  step: string;
+  title: string;
+  description: string;
+  icon: IconKey;
+}
+
+export interface SocialLink {
+  label: string;
+  href: string;
+  icon: SocialKey;
 }

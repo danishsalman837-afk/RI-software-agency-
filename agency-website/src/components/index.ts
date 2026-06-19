@@ -17,3 +17,7 @@ export type { IconKey, SocialKey } from './Icon';
 
 export { default as Eyebrow } from './Eyebrow';
 export { default as SectionHeading } from './SectionHeading';
+
+export { default as LogoWall } from './LogoWall';
+export { default as Process } from './Process';
+export { default as Testimonials } from './Testimonials';

@@ -5,7 +5,7 @@ import { PROCESS_STEPS } from "@/data";
 
 export default function Process() {
   return (
-    <Section className="bg-[#050510] py-24 md:py-28">
+    <Section className="bg-[#050510] py-24 md:py-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <FadeIn className="mb-20">
           <SectionHeading

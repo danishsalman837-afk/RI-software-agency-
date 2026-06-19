@@ -4,7 +4,7 @@ import { TESTIMONIALS } from "@/data";
 
 export default function Testimonials() {
   return (
-    <Section className="bg-[#0d0d1a] border-y border-[#2a2a40] py-24 md:py-28 overflow-hidden">
+    <Section className="bg-[#0d0d1a] border-y border-[#2a2a40] py-24 md:py-32 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <FadeIn className="mb-20">
           <SectionHeading
@@ -19,8 +19,12 @@ export default function Testimonials() {
           {TESTIMONIALS.map((t) => (
             <StaggerItem key={t.name}>
               <figure className="h-full glass rounded-3xl p-8 flex flex-col">
-                <div className="text-6xl leading-none text-[#6c5ce7]/40 font-serif mb-2" aria-hidden="true">
-                  &ldquo;
+                <div className="flex gap-1 mb-5" aria-hidden="true">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <svg key={i} className="w-5 h-5 text-[#fdcb6e]" viewBox="0 0 20 20" fill="currentColor">
+                      <path d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1.99 5.78L10 14.77l-5.2 2.73.99-5.78-4.21-4.1 5.82-.85z" />
+                    </svg>
+                  ))}
                 </div>
                 <blockquote className="text-[#e8e8f0] text-lg leading-relaxed mb-8 flex-grow">
                   {t.quote}

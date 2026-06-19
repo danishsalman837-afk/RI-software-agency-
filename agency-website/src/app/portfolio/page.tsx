@@ -21,7 +21,7 @@ export default function PortfolioPage() {
         subtitle="A showcase of our best work. From innovative startups to global enterprises, we deliver excellence."
       />
 
-      <Section className="bg-[#050510] pt-0">
+      <Section className="bg-[#050510] pt-0 pb-24 md:pb-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-16">
             {PORTFOLIO_ITEMS.map((item, index) => (

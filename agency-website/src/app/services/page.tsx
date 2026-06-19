@@ -15,7 +15,7 @@ export default function ServicesPage() {
       />
 
       {/* Detailed Services */}
-      <Section className="bg-[#050510] pt-0">
+      <Section className="bg-[#050510] pt-0 pb-24 md:pb-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-32">
             {SERVICES.map((service, index) => (

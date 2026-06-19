@@ -10,8 +10,11 @@ interface SectionProps {
 }
 
 export function Section({ children, className = "", id }: SectionProps) {
+  // Padding is intentionally NOT hardcoded here — each section sets its own
+  // vertical rhythm via className. Hardcoding py-* caused conflicting padding
+  // utilities (e.g. `py-20 md:py-32` fighting a caller's `py-24`).
   return (
-    <section id={id} className={`py-20 md:py-32 relative ${className}`}>
+    <section id={id} className={`relative ${className}`}>
       {children}
     </section>
   );

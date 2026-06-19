@@ -1,8 +1,8 @@
-import { PageHeader, Section, FadeIn, StaggerContainer, StaggerItem } from "@/components";
+import { PageHeader, Section, FadeIn, Icon } from "@/components";
 import { SERVICES } from "@/data";
 
 export const metadata = {
-  title: "Services | NovaLabs Agency",
+  title: "Services | RI Software Agency",
   description: "Comprehensive digital services including Web Development, Mobile Apps, AI Solutions, and UI/UX Design.",
 };
 
@@ -24,8 +24,8 @@ export default function ServicesPage() {
                   <FadeIn direction={index % 2 === 1 ? 'left' : 'right'}>
                     <div className="relative aspect-square max-w-md mx-auto">
                       <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} rounded-[40px] opacity-20 blur-3xl`} />
-                      <div className="relative h-full w-full glass rounded-[40px] border border-white/10 flex items-center justify-center text-9xl">
-                        {service.icon}
+                      <div className="relative h-full w-full glass rounded-[40px] border border-white/10 flex items-center justify-center text-[#a29bfe]">
+                        <Icon name={service.icon} className="w-28 h-28" />
                       </div>
                     </div>
                   </FadeIn>
@@ -41,12 +41,12 @@ export default function ServicesPage() {
                     </p>
                     
                     <ul className="space-y-4 mb-8">
-                      {[1, 2, 3].map((_, i) => (
-                        <li key={i} className="flex items-center gap-3 text-[#e8e8f0]">
-                          <span className="w-6 h-6 rounded-full bg-[#6c5ce7]/20 flex items-center justify-center text-[#6c5ce7] text-sm">
-                            ✓
+                      {service.features.map((feature) => (
+                        <li key={feature} className="flex items-center gap-3 text-[#e8e8f0]">
+                          <span className="w-6 h-6 rounded-full bg-[#6c5ce7]/20 flex items-center justify-center text-[#6c5ce7] flex-shrink-0">
+                            <Icon name="check" className="w-4 h-4" />
                           </span>
-                          Custom strategy & implementation
+                          {feature}
                         </li>
                       ))}
                     </ul>

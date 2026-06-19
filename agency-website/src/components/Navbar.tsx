@@ -126,12 +126,12 @@ export default function Navbar() {
         {isMobileOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "100dvh" }}
+            animate={{ opacity: 1, height: "calc(100dvh - 5rem)" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.4, ease: "easeInOut" }}
-            className="md:hidden fixed inset-0 top-20 bg-[#050510]/98 backdrop-blur-xl z-40"
+            className="md:hidden fixed top-20 left-0 right-0 bg-[#050510]/98 backdrop-blur-xl z-40 overflow-y-auto"
           >
-            <div className="flex flex-col items-center justify-center h-full gap-2 px-6 -mt-20">
+            <div className="flex flex-col items-center justify-center h-full gap-2 px-6 py-10">
               {NAV_LINKS.map((link, i) => {
                 const isActive = pathname === link.href;
                 return (

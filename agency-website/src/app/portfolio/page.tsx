@@ -1,8 +1,15 @@
-import { PageHeader, Section, StaggerContainer, StaggerItem } from "@/components";
+import { PageHeader, Section, StaggerContainer, StaggerItem, Icon } from "@/components";
+import type { IconKey } from "@/components";
 import { PORTFOLIO_ITEMS } from "@/data";
 
+const CATEGORY_ICON: Record<string, IconKey> = {
+  "Web Application": "globe",
+  "Mobile App": "smartphone",
+  "AI Solution": "bot",
+};
+
 export const metadata = {
-  title: "Portfolio | NovaLabs Agency",
+  title: "Portfolio | RI Software Agency",
   description: "Explore our latest projects and see how we've helped businesses transform their digital presence.",
 };
 
@@ -28,8 +35,8 @@ export default function PortfolioPage() {
                     {/* Placeholder Icon */}
                     <div className="absolute inset-0 flex items-center justify-center">
                       <div className={`w-32 h-32 rounded-full bg-gradient-to-br ${item.gradient} blur-2xl opacity-50 group-hover:scale-150 transition-transform duration-700`} />
-                      <span className="text-8xl relative z-10 group-hover:scale-110 transition-transform duration-500 drop-shadow-2xl">
-                        {item.id === 1 ? "📊" : item.id === 2 ? "🏥" : item.id === 3 ? "🌱" : item.id === 4 ? "🛍️" : item.id === 5 ? "✅" : "🧠"}
+                      <span className="relative z-10 text-white/90 group-hover:scale-110 transition-transform duration-500 drop-shadow-2xl">
+                        <Icon name={CATEGORY_ICON[item.category] ?? "code"} className="w-20 h-20" />
                       </span>
                     </div>
 

@@ -1,4 +1,4 @@
-import { PageHeader, Section, FadeIn, ContactForm } from "@/components";
+import { PageHeader, Section, FadeIn, ContactForm, Icon } from "@/components";
 import { TEAM } from "@/data";
 
 export const metadata = {
@@ -33,8 +33,8 @@ export default function ContactPage() {
                   
                   {TEAM.map((member) => (
                     <div key={member.name} className="flex items-center gap-6 p-6 rounded-2xl bg-[#0d0d1a] border border-[#2a2a40] hover:border-[#6c5ce7]/50 transition-colors group">
-                      <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#6c5ce7] to-[#00cec9] flex items-center justify-center text-3xl shadow-lg group-hover:scale-110 transition-transform duration-300">
-                        {member.image}
+                      <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#6c5ce7] to-[#00cec9] flex items-center justify-center text-white text-xl font-bold shadow-lg group-hover:scale-110 transition-transform duration-300">
+                        {member.name.split(" ").map((n) => n[0]).join("")}
                       </div>
                       <div>
                         <h4 className="text-white font-bold text-xl mb-1">{member.name}</h4>
@@ -50,8 +50,8 @@ export default function ContactPage() {
                     <h3 className="text-2xl font-bold text-white border-b border-[#2a2a40] pb-4 mb-8">General Inquiries</h3>
                     
                     <div className="flex items-start gap-6 mb-8">
-                      <div className="w-14 h-14 rounded-2xl bg-[#00cec9]/10 text-[#00cec9] flex items-center justify-center text-2xl shrink-0">
-                        ✉️
+                      <div className="w-14 h-14 rounded-2xl bg-[#00cec9]/10 text-[#00cec9] flex items-center justify-center shrink-0">
+                        <Icon name="mail" className="w-6 h-6" />
                       </div>
                       <div>
                         <h4 className="text-white font-bold text-xl mb-2">Email Us</h4>
@@ -63,8 +63,8 @@ export default function ContactPage() {
                     </div>
 
                     <div className="flex items-start gap-6">
-                      <div className="w-14 h-14 rounded-2xl bg-[#fd79a8]/10 text-[#fd79a8] flex items-center justify-center text-2xl shrink-0">
-                        📞
+                      <div className="w-14 h-14 rounded-2xl bg-[#fd79a8]/10 text-[#fd79a8] flex items-center justify-center shrink-0">
+                        <Icon name="phone" className="w-6 h-6" />
                       </div>
                       <div>
                         <h4 className="text-white font-bold text-xl mb-2">Call Us</h4>

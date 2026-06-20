@@ -123,8 +123,8 @@ export default function Footer() {
                   <a href="tel:03200430832" className="hover:text-white transition-colors text-base font-medium">
                     0320 0430832
                   </a>
-                  <a href="tel:93254864702" className="hover:text-white transition-colors text-base font-medium">
-                    9325 4864702
+                  <a href="tel:03254864702" className="hover:text-white transition-colors text-base font-medium">
+                    0325 4864702
                   </a>
                 </div>
               </li>

@@ -40,8 +40,8 @@ export default function ContactPage() {
                       <div>
                         <h4 className="text-white font-bold text-xl mb-1">{member.name}</h4>
                         <p className="text-[#8888a0] mb-2">{member.role}</p>
-                        <a href={`mailto:${member.name.split(' ')[0].toLowerCase()}@risoftware.agency`} className="text-[#6c5ce7] hover:text-white transition-colors font-medium">
-                          {member.name.split(' ')[0].toLowerCase()}@risoftware.agency
+                        <a href={`mailto:${member.name === 'Danish Salman' ? 'danishsalman234@gmail.com' : 'flyluckyfire@gmail.com'}`} className="text-[#6c5ce7] hover:text-white transition-colors font-medium">
+                          {member.name === 'Danish Salman' ? 'danishsalman234@gmail.com' : 'flyluckyfire@gmail.com'}
                         </a>
                       </div>
                     </div>
@@ -57,8 +57,8 @@ export default function ContactPage() {
                       <div>
                         <h4 className="text-white font-bold text-xl mb-2">Email Us</h4>
                         <p className="text-[#8888a0] text-lg">
-                          <a href="mailto:hello@risoftware.agency" className="hover:text-white transition-colors block mb-1">hello@risoftware.agency</a>
-                          <a href="mailto:careers@risoftware.agency" className="hover:text-white transition-colors block">careers@risoftware.agency</a>
+                          <a href="mailto:danishsalman234@gmail.com" className="hover:text-white transition-colors block mb-1">danishsalman234@gmail.com</a>
+                          <a href="mailto:flyluckyfire@gmail.com" className="hover:text-white transition-colors block">flyluckyfire@gmail.com</a>
                         </p>
                       </div>
                     </div>
@@ -70,7 +70,8 @@ export default function ContactPage() {
                       <div>
                         <h4 className="text-white font-bold text-xl mb-2">Call Us</h4>
                         <p className="text-[#8888a0] text-lg">
-                          <a href="tel:+15551234567" className="hover:text-white transition-colors block mb-1">+1 (555) 123-4567</a>
+                          <a href="tel:03200430832" className="hover:text-white transition-colors block mb-1">0320 0430832</a>
+                          <a href="tel:03254864702" className="hover:text-white transition-colors block mb-1">0325 4864702</a>
                           <span className="text-sm">Mon-Fri from 9am to 6pm (Global)</span>
                         </p>
                       </div>

@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import { ReactNode } from "react";
+import Eyebrow from "./Eyebrow";
 
 interface SectionProps {
   children: ReactNode;
@@ -128,10 +129,7 @@ export function PageHeader({
           <div className="lg:col-span-8">
             {eyebrow && (
               <FadeIn>
-                <p className="mb-6 inline-flex items-center gap-3 font-mono text-xs uppercase tracking-[0.18em] text-muted">
-                  <span aria-hidden className="h-px w-8 bg-accent" />
-                  {eyebrow}
-                </p>
+                <Eyebrow className="mb-6">{eyebrow}</Eyebrow>
               </FadeIn>
             )}
             <FadeIn delay={0.05}>

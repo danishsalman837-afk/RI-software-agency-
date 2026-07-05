@@ -17,7 +17,7 @@ export const SERVICES: ServiceCard[] = [
     description:
       "Web apps and marketing sites that stay fast as they grow. We build on Next.js and React, wire up the CMS and APIs your team actually uses, and hand over code you can maintain.",
     features: ["Next.js & React, front to back", "Headless CMS + API integration", "Fast, accessible, SEO-ready"],
-    gradient: "from-[#b4432b] to-[#db6a46]",
+    gradient: "from-accent to-accent-warm",
   },
   {
     icon: "smartphone",
@@ -25,7 +25,7 @@ export const SERVICES: ServiceCard[] = [
     description:
       "iOS and Android from one codebase, without the cross-platform compromises. We ship to the stores and stay on through the update cycle.",
     features: ["One codebase, both platforms", "React Native & Flutter", "Store submission + release support"],
-    gradient: "from-[#b4432b] to-[#db6a46]",
+    gradient: "from-accent to-accent-warm",
   },
   {
     icon: "bot",
@@ -33,7 +33,7 @@ export const SERVICES: ServiceCard[] = [
     description:
       "Practical AI that removes real work — support triage, document processing, internal copilots. We connect models to your data and put guardrails around them.",
     features: ["LLM features on your own data", "Back-office & workflow automation", "Evaluation and guardrails"],
-    gradient: "from-[#b4432b] to-[#db6a46]",
+    gradient: "from-accent to-accent-warm",
   },
   {
     icon: "palette",
@@ -41,7 +41,7 @@ export const SERVICES: ServiceCard[] = [
     description:
       "Product and interface design that ships, not just Figma files. We prototype the risky flows first, then design a system your engineers can build straight from.",
     features: ["Product & UX design", "Design systems in code", "Prototypes for the hard flows"],
-    gradient: "from-[#b4432b] to-[#db6a46]",
+    gradient: "from-accent to-accent-warm",
   },
 ];
 
@@ -59,7 +59,7 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     outcome: "Real-time dashboard consolidating 12 data sources into one view.",
     image: "/portfolio/finflow.jpg",
     tags: ["React", "TypeScript", "D3", "Node.js"],
-    gradient: "from-[#b4432b] to-[#db6a46]",
+    gradient: "from-accent to-accent-warm",
   },
   {
     id: 2,
@@ -71,7 +71,7 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     outcome: "One codebase shipped to both app stores in ten weeks.",
     image: "/portfolio/medicare.jpg",
     tags: ["React Native", "Python", "Firebase"],
-    gradient: "from-[#b4432b] to-[#db6a46]",
+    gradient: "from-accent to-accent-warm",
   },
   {
     id: 3,
@@ -83,7 +83,7 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     outcome: "Cut a week of manual report assembly down to an afternoon.",
     image: "/portfolio/ecotrack.jpg",
     tags: ["Next.js", "Python", "PostgreSQL", "AWS"],
-    gradient: "from-[#b4432b] to-[#db6a46]",
+    gradient: "from-accent to-accent-warm",
   },
   {
     id: 4,
@@ -95,7 +95,7 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     outcome: "Sub-second product pages on a catalog of 40k SKUs.",
     image: "/portfolio/shopverse.jpg",
     tags: ["Next.js", "Stripe", "PostgreSQL"],
-    gradient: "from-[#b4432b] to-[#db6a46]",
+    gradient: "from-accent to-accent-warm",
   },
   {
     id: 5,
@@ -107,7 +107,7 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     outcome: "Offline-first sync so field crews keep working without signal.",
     image: "/portfolio/taskpilot.jpg",
     tags: ["Flutter", "Dart", "Firebase"],
-    gradient: "from-[#b4432b] to-[#db6a46]",
+    gradient: "from-accent to-accent-warm",
   },
   {
     id: 6,
@@ -119,7 +119,7 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     outcome: "Natural-language queries over a warehouse, with source citations.",
     image: "/portfolio/dataforge.jpg",
     tags: ["Python", "React", "OpenAI", "GCP"],
-    gradient: "from-[#b4432b] to-[#db6a46]",
+    gradient: "from-accent to-accent-warm",
   },
 ];
 
@@ -218,9 +218,9 @@ export const PROCESS_STEPS: ProcessStep[] = [
 ];
 
 export const CORE_VALUES: CoreValue[] = [
-  { icon: "target", title: "Do less, better", description: "We'd rather ship a handful of things that genuinely work than a long list that sort of does. Focus is a feature.", gradient: "from-[#b4432b] to-[#db6a46]" },
-  { icon: "handshake", title: "Tell the truth", description: "About timelines, trade-offs, and the occasional mistake. You'll always know where your project really stands.", gradient: "from-[#b4432b] to-[#db6a46]" },
-  { icon: "rocket", title: "Own the outcome", description: "We're not finished when the code merges. We're finished when it works for the people who use it.", gradient: "from-[#b4432b] to-[#db6a46]" },
+  { icon: "target", title: "Do less, better", description: "We'd rather ship a handful of things that genuinely work than a long list that sort of does. Focus is a feature.", gradient: "from-accent to-accent-warm" },
+  { icon: "handshake", title: "Tell the truth", description: "About timelines, trade-offs, and the occasional mistake. You'll always know where your project really stands.", gradient: "from-accent to-accent-warm" },
+  { icon: "rocket", title: "Own the outcome", description: "We're not finished when the code merges. We're finished when it works for the people who use it.", gradient: "from-accent to-accent-warm" },
 ];
 
 // TODO: Replace placeholder social URLs with real profiles before launch.

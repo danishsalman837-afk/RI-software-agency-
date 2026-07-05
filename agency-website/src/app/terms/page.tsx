@@ -1,13 +1,16 @@
-import { PageHeader, Section } from "@/components";
+import { PageHeader, Section, JsonLd } from "@/components";
+import { pageMetadata, breadcrumbLd } from "@/lib/seo";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "Terms",
   description: "The terms that govern use of the RI Software website.",
-};
+  path: "/terms",
+});
 
 export default function TermsPage() {
   return (
     <>
+      <JsonLd data={breadcrumbLd("Terms", "/terms")} />
       <PageHeader
         eyebrow="Legal"
         title="Terms."

@@ -1,18 +1,21 @@
 import Link from "next/link";
-import { PageHeader, Section, FadeIn, Icon } from "@/components";
+import { PageHeader, Section, FadeIn, Icon, JsonLd } from "@/components";
 import { SERVICES, PROCESS_STEPS } from "@/data";
+import { pageMetadata, breadcrumbLd } from "@/lib/seo";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "Services",
   description:
     "Web platforms, mobile apps, AI automation, and product design — built by a small studio that stays until it works.",
-};
+  path: "/services",
+});
 
 const CONTAINER = "max-w-7xl mx-auto px-6 lg:px-10";
 
 export default function ServicesPage() {
   return (
     <>
+      <JsonLd data={breadcrumbLd("Services", "/services")} />
       <PageHeader
         eyebrow="Services"
         title="What we do, in detail."

@@ -1,18 +1,21 @@
 import Link from "next/link";
-import { PageHeader, Section, StaggerContainer, StaggerItem } from "@/components";
+import { PageHeader, Section, StaggerContainer, StaggerItem, JsonLd } from "@/components";
 import { PORTFOLIO_ITEMS } from "@/data";
+import { pageMetadata, breadcrumbLd } from "@/lib/seo";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "Work",
   description:
     "A selection of web platforms, mobile apps, and AI automation we've designed and built.",
-};
+  path: "/portfolio",
+});
 
 const CONTAINER = "max-w-7xl mx-auto px-6 lg:px-10";
 
 export default function PortfolioPage() {
   return (
     <>
+      <JsonLd data={breadcrumbLd("Work", "/portfolio")} />
       <PageHeader
         eyebrow="Work"
         title="Selected work."

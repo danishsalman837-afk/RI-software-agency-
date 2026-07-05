@@ -1,13 +1,16 @@
-import { PageHeader, Section } from "@/components";
+import { PageHeader, Section, JsonLd } from "@/components";
+import { pageMetadata, breadcrumbLd } from "@/lib/seo";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "Privacy",
   description: "How RI Software handles the information you share with us.",
-};
+  path: "/privacy",
+});
 
 export default function PrivacyPage() {
   return (
     <>
+      <JsonLd data={breadcrumbLd("Privacy", "/privacy")} />
       <PageHeader
         eyebrow="Legal"
         title="Privacy."

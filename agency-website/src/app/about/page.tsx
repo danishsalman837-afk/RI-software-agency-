@@ -1,18 +1,21 @@
-import { PageHeader, Section, FadeIn, StaggerContainer, StaggerItem } from "@/components";
+import { PageHeader, Section, FadeIn, StaggerContainer, StaggerItem, JsonLd } from "@/components";
 import { CORE_VALUES, TEAM } from "@/data";
 import { getInitials } from "@/lib/utils";
+import { pageMetadata, breadcrumbLd } from "@/lib/seo";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "About",
   description:
     "RI Software is a small, senior software studio. Two founders, a focused workload, and a bias toward shipping.",
-};
+  path: "/about",
+});
 
 const CONTAINER = "max-w-7xl mx-auto px-6 lg:px-10";
 
 export default function AboutPage() {
   return (
     <>
+      <JsonLd data={breadcrumbLd("About", "/about")} />
       <PageHeader
         eyebrow="About"
         title="A small studio, on purpose."

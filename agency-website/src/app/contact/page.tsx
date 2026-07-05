@@ -1,11 +1,13 @@
-import { PageHeader, Section, FadeIn, ContactForm } from "@/components";
+import { PageHeader, Section, FadeIn, ContactForm, JsonLd } from "@/components";
 import { TEAM } from "@/data";
+import { pageMetadata, breadcrumbLd } from "@/lib/seo";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "Contact",
   description:
     "Tell us what you're trying to build. You'll hear back from a founder within a business day.",
-};
+  path: "/contact",
+});
 
 const CONTAINER = "max-w-7xl mx-auto px-6 lg:px-10";
 
@@ -18,6 +20,7 @@ const CONTACTS: Record<string, { email: string; phone: string; tel: string }> = 
 export default function ContactPage() {
   return (
     <>
+      <JsonLd data={breadcrumbLd("Contact", "/contact")} />
       <PageHeader
         eyebrow="Contact"
         title="Let's talk."

@@ -62,8 +62,13 @@ export default function Footer() {
             <h3 className="font-mono text-xs uppercase tracking-[0.18em] text-paper/50 mb-5">Contact</h3>
             <ul className="space-y-3 text-[0.95rem]">
               <li>
-                <a href="mailto:hello@risoftware.agency" className="text-paper/80 hover:text-paper link-underline">
-                  hello@risoftware.agency
+                <a href="mailto:danishsalman234@gmail.com" className="text-paper/80 hover:text-paper link-underline">
+                  danishsalman234@gmail.com
+                </a>
+              </li>
+              <li>
+                <a href="mailto:flyluckyfire@gmail.com" className="text-paper/80 hover:text-paper link-underline">
+                  flyluckyfire@gmail.com
                 </a>
               </li>
               <li className="text-paper/60">Mon–Fri · Replies within a day</li>

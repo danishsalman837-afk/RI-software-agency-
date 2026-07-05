@@ -9,9 +9,11 @@ export const metadata = {
 
 const CONTAINER = "max-w-7xl mx-auto px-6 lg:px-10";
 
-function founderEmail(name: string) {
-  return `${name.split(" ")[0].toLowerCase()}@risoftware.agency`;
-}
+// Real founder contact details.
+const CONTACTS: Record<string, { email: string; phone: string; tel: string }> = {
+  "Danish Salman": { email: "danishsalman234@gmail.com", phone: "0320 0430832", tel: "03200430832" },
+  "Ahmed Saleem": { email: "flyluckyfire@gmail.com", phone: "0325 4864702", tel: "03254864702" },
+};
 
 export default function ContactPage() {
   return (
@@ -31,20 +33,23 @@ export default function ContactPage() {
                 Talk to a founder directly
               </p>
               <ul className="mb-14">
-                {TEAM.map((member) => (
-                  <li key={member.name} className="border-t border-line py-6 flex items-baseline justify-between gap-4">
-                    <div>
-                      <p className="font-display text-2xl text-ink">{member.name}</p>
-                      <p className="text-muted text-sm mt-1">{member.focus}</p>
-                    </div>
-                    <a
-                      href={`mailto:${founderEmail(member.name)}`}
-                      className="font-mono text-sm text-ink link-underline shrink-0"
-                    >
-                      {founderEmail(member.name)}
-                    </a>
-                  </li>
-                ))}
+                {TEAM.map((member) => {
+                  const c = CONTACTS[member.name];
+                  return (
+                    <li key={member.name} className="border-t border-line py-6 flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2 sm:gap-4">
+                      <div>
+                        <p className="font-display text-2xl text-ink">{member.name}</p>
+                        <p className="text-muted text-sm mt-1">{member.focus}</p>
+                      </div>
+                      {c && (
+                        <div className="flex flex-col sm:items-end gap-1 shrink-0 font-mono text-sm">
+                          <a href={`mailto:${c.email}`} className="text-ink link-underline">{c.email}</a>
+                          <a href={`tel:${c.tel}`} className="text-muted hover:text-ink transition-colors">{c.phone}</a>
+                        </div>
+                      )}
+                    </li>
+                  );
+                })}
               </ul>
 
               <div className="space-y-6 text-[0.95rem]">

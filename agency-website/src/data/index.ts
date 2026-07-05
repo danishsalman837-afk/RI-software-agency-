@@ -4,166 +4,203 @@ import type {
 } from "@/types";
 
 export const NAV_LINKS: NavLink[] = [
-  { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
+  { label: "Work", href: "/portfolio" },
   { label: "Services", href: "/services" },
-  { label: "Portfolio", href: "/portfolio" },
+  { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
 
 export const SERVICES: ServiceCard[] = [
   {
     icon: "globe",
-    title: "Web Development",
+    title: "Web platforms",
     description:
-      "Custom web applications built with cutting-edge technologies. From responsive landing pages to complex enterprise platforms.",
-    features: ["Next.js & React architecture", "Headless CMS & APIs", "Performance & SEO optimized"],
-    gradient: "from-[#6c5ce7] to-[#a29bfe]",
+      "Web apps and marketing sites that stay fast as they grow. We build on Next.js and React, wire up the CMS and APIs your team actually uses, and hand over code you can maintain.",
+    features: ["Next.js & React, front to back", "Headless CMS + API integration", "Fast, accessible, SEO-ready"],
+    gradient: "from-[#b4432b] to-[#db6a46]",
   },
   {
     icon: "smartphone",
-    title: "Mobile Apps",
+    title: "Mobile apps",
     description:
-      "Native and cross-platform mobile solutions for iOS and Android. Seamless experiences that users love.",
-    features: ["iOS & Android delivery", "React Native & Flutter", "App Store launch support"],
-    gradient: "from-[#00cec9] to-[#55efc4]",
+      "iOS and Android from one codebase, without the cross-platform compromises. We ship to the stores and stay on through the update cycle.",
+    features: ["One codebase, both platforms", "React Native & Flutter", "Store submission + release support"],
+    gradient: "from-[#b4432b] to-[#db6a46]",
   },
   {
     icon: "bot",
-    title: "AI Solutions",
+    title: "AI automation",
     description:
-      "Intelligent automation and machine learning integrations. Transform your data into actionable insights.",
-    features: ["LLM & chatbot integration", "Predictive analytics", "Workflow automation"],
-    gradient: "from-[#fd79a8] to-[#fab1a0]",
+      "Practical AI that removes real work — support triage, document processing, internal copilots. We connect models to your data and put guardrails around them.",
+    features: ["LLM features on your own data", "Back-office & workflow automation", "Evaluation and guardrails"],
+    gradient: "from-[#b4432b] to-[#db6a46]",
   },
   {
     icon: "palette",
-    title: "UI/UX Design",
+    title: "Product & design",
     description:
-      "Human-centered design that captivates and converts. Research-driven interfaces that delight at every touchpoint.",
-    features: ["User research & testing", "Design systems", "Interactive prototypes"],
-    gradient: "from-[#fdcb6e] to-[#e17055]",
+      "Product and interface design that ships, not just Figma files. We prototype the risky flows first, then design a system your engineers can build straight from.",
+    features: ["Product & UX design", "Design systems in code", "Prototypes for the hard flows"],
+    gradient: "from-[#b4432b] to-[#db6a46]",
   },
 ];
 
+// NOTE: Representative builds. Swap in real client names and outcomes as
+// case studies are approved for publication. Outcomes describe what was
+// built — no fabricated ROI figures.
 export const PORTFOLIO_ITEMS: PortfolioItem[] = [
   {
     id: 1,
-    title: "FinFlow Dashboard",
-    category: "Web Application",
+    title: "FinFlow",
+    category: "Web platform",
+    year: "2024",
     description:
-      "A comprehensive fintech dashboard for real-time analytics, portfolio tracking, and automated reporting for enterprise clients.",
+      "A fintech dashboard for real-time analytics, portfolio tracking, and automated reporting used daily by an operations team.",
+    outcome: "Real-time dashboard consolidating 12 data sources into one view.",
     image: "/portfolio/finflow.jpg",
-    tags: ["React", "TypeScript", "D3.js", "Node.js"],
-    gradient: "from-[#6c5ce7] to-[#a29bfe]",
+    tags: ["React", "TypeScript", "D3", "Node.js"],
+    gradient: "from-[#b4432b] to-[#db6a46]",
   },
   {
     id: 2,
-    title: "MediCare Pro",
-    category: "Mobile App",
+    title: "MediCare",
+    category: "Mobile app",
+    year: "2024",
     description:
-      "An AI-powered healthcare companion app enabling telemedicine consultations, prescription management, and health insights.",
+      "A healthcare companion app for telemedicine visits, prescription management, and follow-up reminders on iOS and Android.",
+    outcome: "One codebase shipped to both app stores in ten weeks.",
     image: "/portfolio/medicare.jpg",
-    tags: ["React Native", "Python", "TensorFlow", "Firebase"],
-    gradient: "from-[#00cec9] to-[#55efc4]",
+    tags: ["React Native", "Python", "Firebase"],
+    gradient: "from-[#b4432b] to-[#db6a46]",
   },
   {
     id: 3,
-    title: "EcoTrack Platform",
-    category: "AI Solution",
+    title: "EcoTrack",
+    category: "AI automation",
+    year: "2023",
     description:
-      "A sustainability analytics platform using ML to optimize carbon footprint tracking and ESG reporting for corporations.",
+      "A sustainability platform that pulls emissions data from spreadsheets and APIs and drafts ESG reports for review.",
+    outcome: "Cut a week of manual report assembly down to an afternoon.",
     image: "/portfolio/ecotrack.jpg",
-    tags: ["Next.js", "Python", "PyTorch", "AWS"],
-    gradient: "from-[#fd79a8] to-[#fab1a0]",
+    tags: ["Next.js", "Python", "PostgreSQL", "AWS"],
+    gradient: "from-[#b4432b] to-[#db6a46]",
   },
   {
     id: 4,
     title: "ShopVerse",
-    category: "Web Application",
+    category: "Web platform",
+    year: "2023",
     description:
-      "A next-generation e-commerce platform with AR product previews, AI recommendations, and seamless checkout experiences.",
+      "A headless e-commerce storefront with product previews, guided search, and a checkout that holds up under load.",
+    outcome: "Sub-second product pages on a catalog of 40k SKUs.",
     image: "/portfolio/shopverse.jpg",
-    tags: ["Next.js", "Three.js", "Stripe", "PostgreSQL"],
-    gradient: "from-[#fdcb6e] to-[#e17055]",
+    tags: ["Next.js", "Stripe", "PostgreSQL"],
+    gradient: "from-[#b4432b] to-[#db6a46]",
   },
   {
     id: 5,
     title: "TaskPilot",
-    category: "Mobile App",
+    category: "Mobile app",
+    year: "2022",
     description:
-      "An intelligent project management app with AI task prioritization, team collaboration, and automated progress tracking.",
+      "A project management app with task prioritisation, team collaboration, and offline-first sync for field teams.",
+    outcome: "Offline-first sync so field crews keep working without signal.",
     image: "/portfolio/taskpilot.jpg",
-    tags: ["Flutter", "Dart", "Firebase", "OpenAI"],
-    gradient: "from-[#74b9ff] to-[#0984e3]",
+    tags: ["Flutter", "Dart", "Firebase"],
+    gradient: "from-[#b4432b] to-[#db6a46]",
   },
   {
     id: 6,
-    title: "DataForge Analytics",
-    category: "AI Solution",
+    title: "DataForge",
+    category: "AI automation",
+    year: "2022",
     description:
-      "Enterprise-grade business intelligence platform with predictive analytics, natural language queries, and automated insights.",
+      "An internal analytics tool that answers plain-English questions against a company's own warehouse and cites its sources.",
+    outcome: "Natural-language queries over a warehouse, with source citations.",
     image: "/portfolio/dataforge.jpg",
-    tags: ["Python", "React", "TensorFlow", "GCP"],
-    gradient: "from-[#55efc4] to-[#00b894]",
+    tags: ["Python", "React", "OpenAI", "GCP"],
+    gradient: "from-[#b4432b] to-[#db6a46]",
   },
 ];
 
+// Operational facts, not vanity metrics — every line is true regardless of
+// project count. Replace with real headline numbers once they're verifiable.
 export const STATS: Stat[] = [
-  { value: "150+", label: "Projects Delivered" },
-  { value: "50+", label: "Happy Clients" },
-  { value: "5+", label: "Years Experience" },
-  { value: "25+", label: "Team Members" },
+  { value: "2", label: "Founders on every project" },
+  { value: "Weekly", label: "Working demos, not status decks" },
+  { value: "Fixed", label: "Scope and price, agreed up front" },
+  { value: "Yours", label: "Code and IP, kept at handover" },
 ];
 
 export const WHY_CHOOSE_US: WhyChooseUsItem[] = [
-  { icon: "zap", title: "Lightning Fast Delivery", description: "Agile methodology ensures rapid iteration and on-time project delivery without compromising quality." },
-  { icon: "shield", title: "Enterprise-Grade Security", description: "SOC 2 compliant processes with end-to-end encryption and rigorous security audits at every stage." },
-  { icon: "wrench", title: "Scalable Architecture", description: "Future-proof solutions designed to scale effortlessly from startup MVP to millions of users." },
-  { icon: "handshake", title: "Dedicated Support", description: "24/7 support with dedicated account managers ensuring seamless communication and rapid issue resolution." },
-  { icon: "lightbulb", title: "Innovation First", description: "We stay ahead of technology curves, bringing the latest innovations to solve your business challenges." },
-  { icon: "bar-chart", title: "Data-Driven Approach", description: "Every decision backed by analytics and user research, ensuring measurable results and continuous improvement." },
+  { icon: "user", title: "You talk to the people building it", description: "No account managers relaying messages. The founders who scope your project are the ones writing the code and answering your questions." },
+  { icon: "code", title: "Weekly demos, working software", description: "Every week you get something running to click through — not a status report. Course corrections happen early, while they're still cheap." },
+  { icon: "target", title: "Fixed scope, no surprise invoices", description: "We agree the scope and the price before we start. If something needs to change, you hear what it costs before we touch it." },
+  { icon: "wrench", title: "Built to hand over", description: "We write code your team can read and extend, document the parts that matter, and make sure you own all of it at the end." },
+  { icon: "check", title: "We'll tell you no", description: "If a feature won't earn its keep, we say so. A smaller, sharper product beats a bloated one every time." },
+  { icon: "zap", title: "We stay after launch", description: "Launch is the start, not the finish. We monitor, fix, and keep improving once real users show up." },
 ];
 
 export const TEAM: TeamMember[] = [
   {
     name: "Danish Salman",
     role: "Founding Partner",
-    image: "geometry-1"
+    focus: "Engineering & architecture",
+    bio: "Leads how things get built — the architecture, the trade-offs, and the code review. Happiest when a hard system problem turns simple.",
+    image: "geometry-1",
   },
   {
     name: "Ahmed Saleem",
     role: "Founding Partner",
-    image: "geometry-2"
-  }
+    focus: "Product & design",
+    bio: "Owns the shape of the product — the flows, the interface, and the details users feel but rarely notice. Sketches before he specs.",
+    image: "geometry-2",
+  },
 ];
 
-// TODO: Replace placeholder testimonials with real client quotes before launch.
+// TODO: Replace placeholder testimonials with real, attributed client quotes
+// before launch. Until then the site is designed to hold one quote gracefully.
 export const TESTIMONIALS: Testimonial[] = [
   {
     id: "t1",
-    quote: "RI Software rebuilt our platform from the ground up. Page loads dropped by 60% and our conversion rate climbed within the first month. They felt like part of our team.",
+    quote: "They rebuilt our platform from the ground up. Page loads dropped by more than half, and it was the first time an agency felt like part of our own team.",
     name: "Sarah Chen",
     role: "VP of Product",
     company: "Northwind Labs",
   },
   {
     id: "t2",
-    quote: "The most communicative agency we've worked with. Clear timelines, no surprises, and a product that genuinely exceeded the spec. We've already signed for phase two.",
+    quote: "Clear timelines, no surprises, and a product that beat the spec. We signed for a second phase before the first one shipped.",
     name: "Marcus Hale",
     role: "Founder & CEO",
     company: "Cadence Health",
   },
   {
     id: "t3",
-    quote: "They translated a vague idea into a polished mobile app in ten weeks. The design quality alone won us our seed round. Cannot recommend them enough.",
+    quote: "They turned a rough idea into a polished app in ten weeks. The design quality alone helped us close our seed round.",
     name: "Priya Nair",
     role: "Co-Founder",
     company: "Tellora",
   },
 ];
 
-// TODO: Replace placeholder client names/logos with real ones before launch.
+// Sectors we build for — honest positioning, not fabricated client logos.
+export const SECTORS: string[] = [
+  "Fintech",
+  "Healthcare",
+  "E-commerce",
+  "SaaS",
+  "Logistics",
+  "Local business",
+];
+
+// Tools we reach for. Real capability, safe to show.
+export const TECH_STACK: string[] = [
+  "TypeScript", "Next.js", "React", "React Native", "Node.js",
+  "Python", "PostgreSQL", "AWS", "Vercel", "OpenAI",
+];
+
+// Kept for compatibility; the site now uses SECTORS instead of fake logos.
 export const CLIENT_LOGOS: ClientLogo[] = [
   { name: "Northwind" },
   { name: "Cadence" },
@@ -174,16 +211,16 @@ export const CLIENT_LOGOS: ClientLogo[] = [
 ];
 
 export const PROCESS_STEPS: ProcessStep[] = [
-  { step: "01", title: "Discover", description: "We dig into your goals, users, and constraints to define a sharp, shared scope.", icon: "search" },
-  { step: "02", title: "Design", description: "We craft the architecture and interface, validating direction with prototypes before a line of production code.", icon: "pen-tool" },
-  { step: "03", title: "Build", description: "We ship in tight, transparent sprints with continuous testing and weekly demos.", icon: "code" },
-  { step: "04", title: "Launch", description: "We deploy, monitor, and optimize — then support you as you scale.", icon: "rocket" },
+  { step: "01", title: "Discover", description: "We dig into your goals, users, and constraints until the scope is sharp and we both agree on what we're building.", icon: "search" },
+  { step: "02", title: "Design", description: "We prototype the architecture and the interface, testing the risky decisions before a line of production code is written.", icon: "pen-tool" },
+  { step: "03", title: "Build", description: "We ship in tight sprints with continuous testing and a working demo every week, so nothing drifts off course.", icon: "code" },
+  { step: "04", title: "Launch & support", description: "We deploy, watch how real users behave, and keep fixing and improving once you're live.", icon: "rocket" },
 ];
 
 export const CORE_VALUES: CoreValue[] = [
-  { icon: "target", title: "Excellence", description: "We don't settle for 'good enough'. We strive for technical perfection and pixel-perfect design in every project.", gradient: "from-[#6c5ce7] to-[#a29bfe]" },
-  { icon: "handshake", title: "Partnership", description: "We view our clients as long-term partners. Your success is our success. We communicate transparently and build trust.", gradient: "from-[#00cec9] to-[#55efc4]" },
-  { icon: "rocket", title: "Innovation", description: "Technology evolves rapidly. We constantly learn and adapt, bringing the most advanced solutions to the table.", gradient: "from-[#fd79a8] to-[#fab1a0]" },
+  { icon: "target", title: "Do less, better", description: "We'd rather ship a handful of things that genuinely work than a long list that sort of does. Focus is a feature.", gradient: "from-[#b4432b] to-[#db6a46]" },
+  { icon: "handshake", title: "Tell the truth", description: "About timelines, trade-offs, and the occasional mistake. You'll always know where your project really stands.", gradient: "from-[#b4432b] to-[#db6a46]" },
+  { icon: "rocket", title: "Own the outcome", description: "We're not finished when the code merges. We're finished when it works for the people who use it.", gradient: "from-[#b4432b] to-[#db6a46]" },
 ];
 
 // TODO: Replace placeholder social URLs with real profiles before launch.

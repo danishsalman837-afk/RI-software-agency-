@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { ServiceCard } from "@/types";
 import { Icon } from "./Icon";
 
@@ -11,84 +12,94 @@ interface InteractiveServicesProps {
 
 export default function InteractiveServices({ services }: InteractiveServicesProps) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const reduce = useReducedMotion();
+  const active = services[activeIndex];
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-start">
-      {/* Service Tabs */}
-      <div className="lg:col-span-5 space-y-4">
-        {services.map((service, index) => {
-          const isActive = index === activeIndex;
-          return (
-            <button
-              key={index}
-              onClick={() => setActiveIndex(index)}
-              className={`w-full text-left p-6 rounded-2xl transition-all duration-300 relative overflow-hidden ${
-                isActive
-                  ? "glass border-[#6c5ce7]/50 shadow-[0_0_30px_rgba(108,92,231,0.15)]"
-                  : "bg-transparent border border-transparent hover:bg-white/5"
-              }`}
-            >
-              {isActive && (
-                <motion.div
-                  layoutId="activeServiceBg"
-                  className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-5`}
-                  initial={false}
-                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                />
-              )}
-              
-              <div className="relative z-10 flex items-center gap-4">
-                <div className={`transition-transform duration-300 ${isActive ? "text-[#a29bfe] scale-110" : "text-[#8888a0]"}`}>
-                  <Icon name={service.icon} className="w-7 h-7" />
-                </div>
-                <h4 className={`text-xl font-bold transition-colors duration-300 ${isActive ? "text-white" : "text-[#8888a0]"}`}>
-                  {service.title}
-                </h4>
-              </div>
-            </button>
-          );
-        })}
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+      {/* Index */}
+      <div className="lg:col-span-5">
+        <ul>
+          {services.map((service, index) => {
+            const isActive = index === activeIndex;
+            return (
+              <li key={service.title} className="border-t border-line last:border-b">
+                <button
+                  onClick={() => setActiveIndex(index)}
+                  className="group w-full text-left flex items-baseline gap-5 py-6 transition-colors"
+                  aria-pressed={isActive}
+                >
+                  <span
+                    className={`font-mono text-sm pt-1 transition-colors ${
+                      isActive ? "text-accent" : "text-faint group-hover:text-muted"
+                    }`}
+                  >
+                    0{index + 1}
+                  </span>
+                  <span
+                    className={`font-display text-3xl md:text-4xl tracking-[-0.02em] transition-colors ${
+                      isActive ? "text-ink" : "text-ink/35 group-hover:text-ink/70"
+                    }`}
+                  >
+                    {service.title}
+                  </span>
+                </button>
+              </li>
+            );
+          })}
+        </ul>
       </div>
 
-      {/* Service Content Details */}
-      <div className="lg:col-span-7 min-h-[420px] lg:min-h-[480px]">
+      {/* Detail */}
+      <div className="lg:col-span-7 lg:sticky lg:top-28">
         <AnimatePresence mode="wait">
           <motion.div
             key={activeIndex}
-            initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            exit={{ opacity: 0, y: -20, filter: "blur(10px)" }}
-            transition={{ duration: 0.4 }}
-            className="h-full rounded-[2rem] p-8 md:p-12 relative overflow-hidden flex flex-col justify-center border border-white/10 glass"
+            initial={{ opacity: 0, y: reduce ? 0 : 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: reduce ? 0 : -12 }}
+            transition={{ duration: reduce ? 0.15 : 0.4, ease: [0.25, 1, 0.5, 1] }}
+            className="rounded-md border border-line bg-card p-8 md:p-12"
           >
-            {/* Dynamic Background Glow */}
-            <div className={`absolute -bottom-32 -right-32 w-96 h-96 rounded-full bg-gradient-to-br ${services[activeIndex].gradient} blur-[100px] opacity-20`} />
-            <div className={`absolute -top-32 -left-32 w-96 h-96 rounded-full bg-gradient-to-br ${services[activeIndex].gradient} blur-[100px] opacity-20`} />
-            
-            {/* Content */}
-            <div className="relative z-10">
-              <div className="mb-8 text-[#a29bfe]"><Icon name={services[activeIndex].icon} className="w-14 h-14" /></div>
-              <h3 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
-                {services[activeIndex].title}
-              </h3>
-              <p className="text-xl text-[#8888a0] leading-relaxed mb-8">
-                {services[activeIndex].description}
-              </p>
-              <ul className="space-y-3 mb-8">
-                {services[activeIndex].features.map((f) => (
-                  <li key={f} className="flex items-center gap-3 text-[#e8e8f0]">
-                    <Icon name="check" className="w-5 h-5 text-[#00cec9] flex-shrink-0" />
-                    {f}
-                  </li>
-                ))}
-              </ul>
-              <button className={`px-8 py-4 rounded-xl font-semibold text-white bg-gradient-to-r ${services[activeIndex].gradient} hover:shadow-[0_0_30px_rgba(255,255,255,0.1)] transition-all duration-300 hover:scale-105 inline-flex items-center gap-2 group`}>
-                Explore Service
-                <svg className="group-hover:translate-x-1 transition-transform" width="20" height="20" viewBox="0 0 16 16" fill="none">
-                  <path d="M1 8h14M9 4l4 4-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </button>
+            <div className="flex items-center justify-between mb-8">
+              <span className="font-mono text-xs uppercase tracking-[0.18em] text-muted">
+                Service / 0{activeIndex + 1}
+              </span>
+              <span className="text-accent">
+                <Icon name={active.icon} className="w-6 h-6" />
+              </span>
             </div>
+
+            <h3 className="font-display font-medium text-4xl md:text-5xl tracking-[-0.02em] text-ink mb-6 leading-[1.02]">
+              {active.title}
+            </h3>
+            <p className="text-lg text-muted leading-relaxed mb-10 max-w-xl text-pretty">
+              {active.description}
+            </p>
+
+            <ul className="space-y-0 mb-10">
+              {active.features.map((f) => (
+                <li
+                  key={f}
+                  className="flex items-baseline gap-4 py-3 border-t border-line text-ink"
+                >
+                  <span aria-hidden className="font-mono text-xs text-accent">
+                    +
+                  </span>
+                  <span className="text-[0.98rem]">{f}</span>
+                </li>
+              ))}
+            </ul>
+
+            <Link
+              href="/services"
+              className="group inline-flex items-center gap-2 font-medium text-ink"
+            >
+              <span className="link-underline">See how we approach it</span>
+              <svg className="text-accent transition-transform group-hover:translate-x-0.5" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </Link>
           </motion.div>
         </AnimatePresence>
       </div>

@@ -10,6 +10,11 @@ const TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
 const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
 const EMAILJS_CONFIGURED = Boolean(SERVICE_ID && TEMPLATE_ID && PUBLIC_KEY);
 
+const fieldClass =
+  "w-full bg-card border border-line rounded-sm px-4 py-3 text-ink placeholder-faint focus:outline-none focus:border-accent transition-colors";
+const labelClass =
+  "block font-mono text-xs uppercase tracking-[0.14em] text-muted mb-2";
+
 export default function ContactForm() {
   const formRef = useRef<HTMLFormElement>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -42,114 +47,96 @@ export default function ContactForm() {
     } catch (err) {
       console.error(err);
       setError(
-        "Something went wrong sending your message. Please try again or email us directly.",
+        "We couldn't send that just now. Please try again, or email hello@risoftware.agency directly.",
       );
     } finally {
       setIsSubmitting(false);
     }
   };
 
+  if (isSuccess) {
+    return (
+      <motion.div
+        initial={{ opacity: 0, y: 8 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="flex flex-col items-start py-6"
+      >
+        <div className="w-11 h-11 rounded-sm bg-accent/10 text-accent flex items-center justify-center mb-5">
+          <Icon name="check" className="w-5 h-5" />
+        </div>
+        <h3 className="font-display text-2xl text-ink mb-2">Message sent.</h3>
+        <p className="text-muted leading-relaxed max-w-sm">
+          Thanks for reaching out. One of the founders will reply within a day —
+          usually sooner.
+        </p>
+      </motion.div>
+    );
+  }
+
   return (
-    <div className="glass p-8 md:p-10 rounded-2xl relative overflow-hidden">
-      {/* Decorative gradient blur */}
-      <div className="absolute -top-24 -right-24 w-48 h-48 bg-[#6c5ce7] opacity-20 blur-[60px] pointer-events-none rounded-full" />
-      <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-[#00cec9] opacity-20 blur-[60px] pointer-events-none rounded-full" />
+    <form ref={formRef} onSubmit={handleSubmit} className="space-y-5" noValidate={false}>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div>
+          <label htmlFor="name" className={labelClass}>Your name</label>
+          <input type="text" id="name" name="name" required autoComplete="name" className={fieldClass} placeholder="Amara Okafor" />
+        </div>
+        <div>
+          <label htmlFor="company" className={labelClass}>Company <span className="text-faint normal-case tracking-normal">(optional)</span></label>
+          <input type="text" id="company" name="company" autoComplete="organization" className={fieldClass} placeholder="Northwind Labs" />
+        </div>
+      </div>
 
-      {isSuccess ? (
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          className="flex flex-col items-center justify-center py-12 text-center relative z-10"
-        >
-          <div className="w-16 h-16 bg-[#00cec9]/20 rounded-full flex items-center justify-center mb-6">
-            <Icon name="check" className="w-8 h-8 text-[#00cec9]" />
-          </div>
-          <h3 className="text-2xl font-bold text-white mb-2">Message Sent!</h3>
-          <p className="text-[#8888a0]">
-            Thank you for reaching out. Our team will get back to you within 24 hours.
-          </p>
-        </motion.div>
-      ) : (
-        <form ref={formRef} onSubmit={handleSubmit} className="space-y-6 relative z-10">
-          <div>
-            <label htmlFor="name" className="block text-sm font-medium text-[#8888a0] mb-2">
-              Full Name
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              required
-              className="w-full bg-[#1a1a2e]/50 border border-[#2a2a40] rounded-xl px-4 py-3 text-white placeholder-[#8888a0]/50 focus:outline-none focus:border-[#6c5ce7] focus:ring-1 focus:ring-[#6c5ce7] transition-all"
-              placeholder="John Doe"
-            />
-          </div>
+      <div>
+        <label htmlFor="email" className={labelClass}>Email</label>
+        <input type="email" id="email" name="email" required autoComplete="email" className={fieldClass} placeholder="amara@northwind.co" />
+      </div>
 
-          <div>
-            <label htmlFor="email" className="block text-sm font-medium text-[#8888a0] mb-2">
-              Email Address
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              required
-              className="w-full bg-[#1a1a2e]/50 border border-[#2a2a40] rounded-xl px-4 py-3 text-white placeholder-[#8888a0]/50 focus:outline-none focus:border-[#6c5ce7] focus:ring-1 focus:ring-[#6c5ce7] transition-all"
-              placeholder="john@example.com"
-            />
-          </div>
+      <div>
+        <label htmlFor="message" className={labelClass}>What are you building?</label>
+        <textarea
+          id="message"
+          name="message"
+          required
+          rows={5}
+          className={`${fieldClass} resize-none`}
+          placeholder="A rough idea is fine. Tell us the problem, who it's for, and any deadline you're working toward."
+          aria-describedby={error ? "form-error" : undefined}
+        />
+      </div>
 
-          <div>
-            <label htmlFor="message" className="block text-sm font-medium text-[#8888a0] mb-2">
-              How can we help?
-            </label>
-            <textarea
-              id="message"
-              name="message"
-              required
-              rows={5}
-              className="w-full bg-[#1a1a2e]/50 border border-[#2a2a40] rounded-xl px-4 py-3 text-white placeholder-[#8888a0]/50 focus:outline-none focus:border-[#6c5ce7] focus:ring-1 focus:ring-[#6c5ce7] transition-all resize-none"
-              placeholder="Tell us about your project..."
-            />
-          </div>
-
-          {error && (
-            <p className="text-[#fd79a8] text-sm" role="alert">
-              {error}
-            </p>
-          )}
-
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            className={`w-full py-4 rounded-xl text-white font-semibold flex items-center justify-center gap-2 transition-all ${
-              isSubmitting
-                ? "bg-[#6c5ce7]/50 cursor-not-allowed"
-                : "bg-gradient-to-r from-[#6c5ce7] to-[#a29bfe] hover:shadow-lg hover:shadow-[#6c5ce7]/30 hover:-translate-y-0.5"
-            }`}
-          >
-            {isSubmitting ? (
-              <span className="flex items-center gap-2">
-                <svg
-                  className="animate-spin h-5 w-5 text-white"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                >
-                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                </svg>
-                Sending...
-              </span>
-            ) : (
-              <>
-                Send Message
-                <Icon name="arrow-right" className="w-[18px] h-[18px]" />
-              </>
-            )}
-          </button>
-        </form>
+      {error && (
+        <p id="form-error" className="text-accent text-sm" role="alert">
+          {error}
+        </p>
       )}
-    </div>
+
+      <button
+        type="submit"
+        disabled={isSubmitting}
+        className={`group w-full py-4 rounded-sm font-semibold flex items-center justify-center gap-2 transition-colors ${
+          isSubmitting
+            ? "bg-ink/50 text-paper cursor-not-allowed"
+            : "bg-ink text-paper hover:bg-accent"
+        }`}
+      >
+        {isSubmitting ? (
+          <>
+            <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="3" />
+              <path className="opacity-90" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+            </svg>
+            Sending…
+          </>
+        ) : (
+          <>
+            Send message
+            <svg className="transition-transform group-hover:translate-x-0.5" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </>
+        )}
+      </button>
+      <p className="text-faint text-xs">We reply within one business day. No sales sequence.</p>
+    </form>
   );
 }

@@ -113,27 +113,40 @@ export function StaggerItem({
 }
 
 export function PageHeader({
+  eyebrow,
   title,
   subtitle,
 }: {
+  eyebrow?: string;
   title: string;
   subtitle: string;
 }) {
   return (
-    <Section className="pt-32 md:pt-48 pb-10 md:pb-20 overflow-hidden">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-[400px] bg-gradient-to-b from-[#6c5ce7]/20 to-transparent blur-[100px] pointer-events-none rounded-full" />
-      
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-        <FadeIn>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6">
-            {title}
-          </h1>
-        </FadeIn>
-        <FadeIn delay={0.2}>
-          <p className="text-[#8888a0] text-lg md:text-xl max-w-2xl mx-auto">
-            {subtitle}
-          </p>
-        </FadeIn>
+    <Section className="pt-36 md:pt-52 pb-14 md:pb-24">
+      <div className="max-w-7xl mx-auto px-6 lg:px-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-end">
+          <div className="lg:col-span-8">
+            {eyebrow && (
+              <FadeIn>
+                <p className="mb-6 inline-flex items-center gap-3 font-mono text-xs uppercase tracking-[0.18em] text-muted">
+                  <span aria-hidden className="h-px w-8 bg-accent" />
+                  {eyebrow}
+                </p>
+              </FadeIn>
+            )}
+            <FadeIn delay={0.05}>
+              <h1 className="font-display font-medium tracking-[-0.02em] text-balance text-5xl md:text-7xl lg:text-[5.25rem] leading-[0.98]">
+                {title}
+              </h1>
+            </FadeIn>
+          </div>
+          <FadeIn delay={0.15} className="lg:col-span-4">
+            <p className="text-lg md:text-xl leading-relaxed text-muted text-pretty">
+              {subtitle}
+            </p>
+          </FadeIn>
+        </div>
+        <div className="mt-14 md:mt-20 h-px w-full bg-line" />
       </div>
     </Section>
   );

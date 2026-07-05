@@ -1,5 +1,0 @@
-{
-  "buildCommand": "cd agency-website && npm run build",
-  "outputDirectory": "agency-website/out",
-  "installCommand": "cd agency-website && npm install"
-}

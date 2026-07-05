@@ -1,38 +1,50 @@
 import { Section, FadeIn, StaggerContainer, StaggerItem } from "./Animations";
 import SectionHeading from "./SectionHeading";
-import { Icon } from "./Icon";
 import { PROCESS_STEPS } from "@/data";
 
 export default function Process() {
   return (
-    <Section className="bg-[#050510] py-24 md:py-32">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <FadeIn className="mb-20">
+    <Section className="on-dark bg-noir text-paper py-24 md:py-36">
+      <div className="max-w-7xl mx-auto px-6 lg:px-10">
+        <FadeIn className="max-w-3xl mb-16 md:mb-24">
           <SectionHeading
-            eyebrow="How We Work"
-            eyebrowColor="text-[#00cec9]"
-            title="A Process Built for Results"
-            subtitle="A clear, transparent path from first conversation to launch — so you always know what's happening and why."
+            eyebrow="How we work"
+            tone="dark"
+            title="A process you can actually watch."
+            subtitle="Four phases, weekly demos, and no black boxes. You always know what we're doing and why."
           />
         </FadeIn>
 
-        <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {PROCESS_STEPS.map((s) => (
-            <StaggerItem key={s.step}>
-              <div className="relative h-full glass rounded-3xl p-8 group hover:-translate-y-2 transition-transform duration-500">
-                <div className="flex items-center justify-between mb-6">
-                  <div className="w-14 h-14 rounded-xl bg-[#1a1a2e] border border-[#2a2a40] flex items-center justify-center text-[#a29bfe] group-hover:border-[#6c5ce7] transition-colors duration-300">
-                    <Icon name={s.icon} className="w-6 h-6" />
-                  </div>
-                  <span className="text-5xl font-extrabold text-white/5 group-hover:text-[#6c5ce7]/20 transition-colors duration-300">
-                    {s.step}
-                  </span>
-                </div>
-                <h4 className="text-xl font-bold text-white mb-3">{s.title}</h4>
-                <p className="text-[#8888a0] leading-relaxed">{s.description}</p>
-              </div>
-            </StaggerItem>
-          ))}
+        <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+          {PROCESS_STEPS.map((s, i) => {
+            // Mobile: top border on every item except the first
+            const mobileBorder = i !== 0 ? "border-t" : "";
+            // md 2-col: compute row and column separators independently
+            const mdCol = i % 2 === 1 ? "md:border-l md:pl-8" : "";
+            const mdRow = i >= 2 ? "md:border-t" : "md:border-t-0";
+            const mdBorder = `${mdCol} ${mdRow}`;
+            // lg 4-col: all items after the first get a left border, no top
+            const lgBorder =
+              i !== 0
+                ? "lg:border-l lg:border-t-0 lg:pl-8"
+                : "";
+
+            return (
+              <StaggerItem
+                key={s.step}
+                className={`group pt-8 pb-10 md:pr-8 border-white/12 ${mobileBorder} ${mdBorder} ${lgBorder}`}
+              >
+                <div className="border-t border-accent w-10 mb-8 transition-all duration-500 group-hover:w-20" />
+                <span className="font-mono text-sm text-paper/40 tnum">{s.step}</span>
+                <h3 className="font-display text-2xl md:text-3xl tracking-[-0.02em] text-paper mt-3 mb-4">
+                  {s.title}
+                </h3>
+                <p className="text-paper/60 leading-relaxed text-[0.95rem]">
+                  {s.description}
+                </p>
+              </StaggerItem>
+            );
+          })}
         </StaggerContainer>
       </div>
     </Section>

@@ -1,114 +1,183 @@
 @import "tailwindcss";
 
+/* Don't scan design docs for class names — they hold the OLD purple palette
+   and would otherwise leak dead utilities into the stylesheet. */
+@source not "../../docs";
+
+/* ============================================================
+   RI Software — Editorial design system
+   Warm paper, near-black ink, a single oxblood accent.
+   No gradients. No glow. Depth comes from type, space, and rules.
+   ============================================================ */
+
+@theme {
+  /* Surfaces — one warm neutral family, no cool/warm mixing */
+  --color-paper: #f4f0e9; /* base background — warm bone */
+  --color-sand: #ebe4d7; /* alternate band / recessed surface */
+  --color-card: #fbf9f4; /* raised surface */
+  --color-noir: #17130d; /* committed dark band background */
+  --color-noir-2: #211b13; /* dark band raised surface */
+
+  /* Ink — text on paper */
+  --color-ink: #191510; /* primary text */
+  --color-muted: #5f574b; /* secondary text (AA on paper) */
+  --color-faint: #8a8072; /* meta / tertiary (large only) */
+
+  /* Lines */
+  --color-line: #d8cfbe; /* hairline on paper */
+  --color-line-strong: #c4b9a4;
+
+  /* Accent — oxblood, used sparingly (~5% of the page) */
+  --color-accent: #b4432b;
+  --color-accent-deep: #8e3320; /* pressed / hover */
+  --color-accent-warm: #db6a46; /* accent legible on dark bands */
+
+  /* Radius scale — tighter than the default rounded-everything look */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+}
+
+/* Fonts wired from next/font (see layout.tsx). Kept inline so utilities
+   resolve straight to the underlying next/font variable. */
 @theme inline {
-  --color-background: #050510;
-  --color-foreground: #e8e8f0;
-  --color-primary: #6c5ce7;
-  --color-primary-light: #a29bfe;
-  --color-secondary: #00cec9;
-  --color-accent: #fd79a8;
-  --color-surface: #0d0d1a;
-  --color-surface-light: #1a1a2e;
-  --color-border: #2a2a40;
-  --color-muted: #8888a0;
-  --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
+  --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-manrope), system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-space-mono), ui-monospace, "SFMono-Regular", monospace;
 }
 
 * {
-  /* margin: 0;
-  padding: 0; */
   box-sizing: border-box;
 }
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  background: var(--color-background);
-  color: var(--color-foreground);
+  background: var(--color-paper);
+  color: var(--color-ink);
   font-family: var(--font-sans);
+  font-feature-settings: "kern", "liga", "calt";
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 
-::-webkit-scrollbar-track {
-  background: var(--color-surface);
+/* Display face defaults — Fraunces reads best with optical sizing on */
+.font-display {
+  font-optical-sizing: auto;
+  font-feature-settings: "ss01";
 }
 
-::-webkit-scrollbar-thumb {
-  background: var(--color-primary);
-  border-radius: 4px;
+/* Tabular figures for any data / metrics */
+.tnum {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-primary-light);
-}
-
-/* Selection color */
+/* ---- Selection & scrollbar ---- */
 ::selection {
-  background: rgba(108, 92, 231, 0.4);
-  color: #fff;
+  background: var(--color-accent);
+  color: var(--color-paper);
 }
 
-/* Gradient text utility */
-.gradient-text {
-  background: linear-gradient(135deg, #6c5ce7, #a29bfe, #00cec9);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-sand);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-line-strong);
+  border: 2px solid var(--color-sand);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-muted);
 }
 
-/* Gradient background utility */
-.gradient-bg {
-  background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+/* ---- Keyboard focus (accessibility, not optional) ---- */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-xs);
+}
+/* Dark bands get a legible focus ring */
+.on-dark :focus-visible {
+  outline-color: var(--color-accent-warm);
 }
 
-/* Glass morphism utility */
-.glass {
-  background: rgba(13, 13, 26, 0.7);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(108, 92, 231, 0.15);
+/* ---- Skip link ---- */
+.skip-link {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -120%);
+  z-index: 100;
+  padding: 0.75rem 1.25rem;
+  background: var(--color-ink);
+  color: var(--color-paper);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+  transition: transform 0.2s ease;
+}
+.skip-link:focus {
+  transform: translate(-50%, 0);
 }
 
-/* Glow effect */
-.glow {
-  box-shadow: 0 0 30px rgba(108, 92, 231, 0.3),
-              0 0 60px rgba(108, 92, 231, 0.1);
+/* ---- Editorial label (mono, tracked) ---- */
+.label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-muted);
 }
 
-/* Animated gradient border */
-.gradient-border {
-  position: relative;
-  border-radius: 1rem;
-  overflow: hidden;
+/* ---- Animated link underline ---- */
+.link-underline {
+  background-image: linear-gradient(var(--color-accent), var(--color-accent));
+  background-size: 0% 1.5px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.link-underline:hover,
+.link-underline:focus-visible {
+  background-size: 100% 1.5px;
 }
 
-.gradient-border::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  padding: 1px;
-  border-radius: inherit;
-  background: linear-gradient(135deg, #6c5ce7, #00cec9, #fd79a8, #6c5ce7);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
-}
-
-/* Noise texture overlay */
-.noise-overlay::after {
-  content: '';
+/* ---- Paper grain: subtle tooth so surfaces aren't sterile-flat ---- */
+.grain::after {
+  content: "";
   position: fixed;
   inset: 0;
-  opacity: 0.015;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-  pointer-events: none;
   z-index: 1;
+  pointer-events: none;
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+}
+
+/* ---- Reveal helper for CSS-only staggered rows ---- */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }

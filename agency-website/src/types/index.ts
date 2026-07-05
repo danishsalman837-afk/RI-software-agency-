@@ -19,7 +19,10 @@ export interface PortfolioItem {
   id: number;
   title: string;
   category: string;
+  year: string;
   description: string;
+  /** What was actually built — capability, not a fabricated client metric. */
+  outcome: string;
   image: string;
   tags: string[];
   gradient: string;
@@ -28,6 +31,9 @@ export interface PortfolioItem {
 export interface TeamMember {
   name: string;
   role: string;
+  /** Short discipline label, e.g. "Engineering & architecture". */
+  focus?: string;
+  bio?: string;
   image: string;
 }
 

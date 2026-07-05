@@ -15,9 +15,17 @@ export const iconMap = {
 
 export type IconKey = keyof typeof iconMap;
 
-export function Icon({ name, className }: { name: IconKey; className?: string }) {
+export function Icon({
+  name,
+  className,
+  strokeWidth = 1.5,
+}: {
+  name: IconKey;
+  className?: string;
+  strokeWidth?: number;
+}) {
   const Cmp = iconMap[name];
-  return <Cmp className={className} aria-hidden="true" />;
+  return <Cmp className={className} strokeWidth={strokeWidth} aria-hidden="true" />;
 }
 
 export function IconTile({
@@ -29,9 +37,9 @@ export function IconTile({
 }) {
   return (
     <div
-      className={`flex-shrink-0 w-14 h-14 rounded-xl bg-[#1a1a2e] border border-[#2a2a40] flex items-center justify-center text-[#a29bfe] transition-all duration-300 ${className}`}
+      className={`flex-shrink-0 w-12 h-12 rounded-md bg-card border border-line flex items-center justify-center text-accent transition-colors duration-300 ${className}`}
     >
-      <Icon name={name} className="w-6 h-6" />
+      <Icon name={name} className="w-5 h-5" strokeWidth={1.5} />
     </div>
   );
 }

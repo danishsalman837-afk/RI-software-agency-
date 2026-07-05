@@ -1,50 +1,72 @@
-import { Section, FadeIn, StaggerContainer, StaggerItem } from "./Animations";
-import SectionHeading from "./SectionHeading";
+"use client";
+
+import { useState } from "react";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import { Section } from "./Animations";
 import { TESTIMONIALS } from "@/data";
-import { getInitials } from "@/lib/utils";
 
 export default function Testimonials() {
-  return (
-    <Section className="bg-[#0d0d1a] border-y border-[#2a2a40] py-24 md:py-32 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <FadeIn className="mb-20">
-          <SectionHeading
-            eyebrow="Testimonials"
-            eyebrowColor="text-[#fd79a8]"
-            title="What Our Clients Say"
-            subtitle="We measure our success by the growth of the businesses we partner with."
-          />
-        </FadeIn>
+  const [index, setIndex] = useState(0);
+  const reduce = useReducedMotion();
+  const active = TESTIMONIALS[index];
 
-        <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {TESTIMONIALS.map((t) => (
-            <StaggerItem key={t.id}>
-              <figure className="h-full glass rounded-3xl p-8 flex flex-col">
-                <div className="flex gap-1 mb-5" aria-hidden="true">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <svg key={i} className="w-5 h-5 text-[#fdcb6e]" viewBox="0 0 20 20" fill="currentColor">
-                      <path d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1.99 5.78L10 14.77l-5.2 2.73.99-5.78-4.21-4.1 5.82-.85z" />
-                    </svg>
-                  ))}
-                </div>
-                <blockquote className="text-[#e8e8f0] text-lg leading-relaxed mb-8 flex-grow">
-                  {t.quote}
+  return (
+    <Section className="bg-sand border-y border-line py-24 md:py-36 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 lg:px-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+          {/* Rail */}
+          <div className="lg:col-span-4">
+            <p className="font-mono text-xs uppercase tracking-[0.18em] text-muted mb-8 inline-flex items-center gap-3">
+              <span aria-hidden className="h-px w-8 bg-accent" />
+              In their words
+            </p>
+            <div className="flex lg:flex-col gap-1">
+              {TESTIMONIALS.map((t, i) => (
+                <button
+                  key={t.id}
+                  onClick={() => setIndex(i)}
+                  aria-label={`Show testimonial from ${t.name}`}
+                  aria-pressed={i === index}
+                  className={`flex items-center gap-3 py-2 font-mono text-sm transition-colors ${
+                    i === index ? "text-ink" : "text-faint hover:text-muted"
+                  }`}
+                >
+                  <span
+                    className={`h-px transition-all duration-300 ${
+                      i === index ? "w-8 bg-accent" : "w-4 bg-line-strong"
+                    }`}
+                  />
+                  0{i + 1}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Quote */}
+          <div className="lg:col-span-8">
+            <AnimatePresence mode="wait">
+              <motion.figure
+                key={active.id}
+                initial={{ opacity: 0, y: reduce ? 0 : 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: reduce ? 0 : -12 }}
+                transition={{ duration: reduce ? 0.15 : 0.4, ease: [0.25, 1, 0.5, 1] }}
+              >
+                <blockquote className="font-display font-medium text-2xl md:text-4xl lg:text-[2.75rem] leading-[1.15] tracking-[-0.01em] text-ink text-balance">
+                  <span aria-hidden className="text-accent">“</span>
+                  {active.quote}
+                  <span aria-hidden className="text-accent">”</span>
                 </blockquote>
-                <figcaption className="flex items-center gap-4 border-t border-[#2a2a40] pt-6">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#6c5ce7] to-[#00cec9] flex items-center justify-center text-white font-bold">
-                    {getInitials(t.name)}
-                  </div>
-                  <div>
-                    <div className="text-white font-bold">{t.name}</div>
-                    <div className="text-[#8888a0] text-sm">
-                      {t.role}, {t.company}
-                    </div>
-                  </div>
+                <figcaption className="mt-10 flex items-baseline gap-3 text-[0.95rem]">
+                  <span className="font-semibold text-ink">{active.name}</span>
+                  <span className="text-muted">
+                    {active.role}, {active.company}
+                  </span>
                 </figcaption>
-              </figure>
-            </StaggerItem>
-          ))}
-        </StaggerContainer>
+              </motion.figure>
+            </AnimatePresence>
+          </div>
+        </div>
       </div>
     </Section>
   );

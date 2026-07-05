@@ -1,48 +1,58 @@
-import { PageHeader, Section, FadeIn, StaggerContainer, StaggerItem, IconTile } from "@/components";
-import { CORE_VALUES } from "@/data";
+import { PageHeader, Section, FadeIn, StaggerContainer, StaggerItem, JsonLd } from "@/components";
+import { CORE_VALUES, TEAM } from "@/data";
+import { getInitials } from "@/lib/utils";
+import { pageMetadata, breadcrumbLd } from "@/lib/seo";
 
-export const metadata = {
-  title: "About Us | RI Software Agency",
-  description: "Learn about our 5+ years of experience, our mission, our team, and how we build world-class digital products.",
-};
+export const metadata = pageMetadata({
+  title: "About",
+  description:
+    "RI Software is a small, senior software studio. Two founders, a focused workload, and a bias toward shipping.",
+  path: "/about",
+});
+
+const CONTAINER = "max-w-7xl mx-auto px-6 lg:px-10";
 
 export default function AboutPage() {
   return (
     <>
-      <PageHeader 
-        title="Who We Are" 
-        subtitle="We are a team of passionate engineers, designers, and strategists with over 5 years of experience in building exceptional digital products."
+      <JsonLd data={breadcrumbLd("About", "/about")} />
+      <PageHeader
+        eyebrow="About"
+        title="A small studio, on purpose."
+        subtitle="We stayed small so we could stay senior. Two founders, a handful of projects at a time, and no layers between you and the work."
       />
 
-      {/* Mission Section */}
-      <Section className="bg-[#0d0d1a] border-y border-[#2a2a40] py-32">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-            <FadeIn direction="right" className="order-2 lg:order-1 relative h-[600px] rounded-[3rem] overflow-hidden gradient-border p-1 shadow-[0_0_50px_rgba(108,92,231,0.15)]">
-              <div className="absolute inset-1 bg-[#1a1a2e] rounded-[2.8rem] overflow-hidden">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(108,92,231,0.25),transparent_55%),radial-gradient(circle_at_80%_80%,rgba(0,206,201,0.2),transparent_55%)]" />
-                <div className="absolute inset-0 opacity-[0.08] bg-[linear-gradient(rgba(255,255,255,0.6)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.6)_1px,transparent_1px)] [background-size:40px_40px]" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#050510] via-[#050510]/50 to-transparent" />
-                <div className="absolute bottom-10 left-10 right-10">
-                  <div className="glass p-8 rounded-2xl backdrop-blur-xl border border-white/20 shadow-2xl">
-                    <p className="text-2xl font-medium text-white mb-3 italic">&ldquo;Innovation distinguishes between a leader and a follower.&rdquo;</p>
-                    <p className="text-[#8888a0] font-bold">— Steve Jobs</p>
-                  </div>
-                </div>
-              </div>
+      {/* Mission */}
+      <Section className="py-20 md:py-32 bg-sand border-y border-line">
+        <div className={CONTAINER}>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
+            <FadeIn className="lg:col-span-4">
+              <p className="font-mono text-xs uppercase tracking-[0.18em] text-muted inline-flex items-center gap-3">
+                <span aria-hidden className="h-px w-8 bg-accent" />
+                Why RI exists
+              </p>
             </FadeIn>
-            
-            <div className="order-1 lg:order-2">
+            <div className="lg:col-span-8 space-y-8">
               <FadeIn>
-                <h2 className="text-[#6c5ce7] font-bold tracking-widest uppercase text-sm mb-4">Our Mission</h2>
-                <h3 className="text-4xl md:text-6xl font-bold text-white mb-8 leading-tight">
-                  Empowering Businesses Through Technology
-                </h3>
-                <p className="text-[#8888a0] text-xl mb-8 leading-relaxed font-light">
-                  For the past 5 years, RI Software Agency has operated with a simple belief: software should not just solve problems, it should create new possibilities. We bridge the gap between complex technical challenges and elegant, user-centric solutions.
+                <p className="font-display font-medium text-2xl md:text-4xl leading-[1.2] tracking-[-0.01em] text-ink text-pretty">
+                  We&apos;d both worked at places where good software got lost between
+                  account managers, hand-offs, and status decks.
                 </p>
-                <p className="text-[#8888a0] text-xl leading-relaxed font-light">
-                  Led by Founding Partners Danish Salman and Ahmed Saleem, our team brings together diverse expertise from top tech environments to deliver enterprise-grade architecture, stunning interfaces, and scalable infrastructure for startups and global enterprises alike.
+              </FadeIn>
+              <FadeIn delay={0.1}>
+                <p className="text-lg text-muted leading-relaxed max-w-2xl text-pretty">
+                  So we started RI with a narrow idea of how it should work: keep the
+                  team small enough that the people who scope a project are the ones who
+                  build it, agree on scope and price before starting, and put working
+                  software in front of the client every week. Five years on, that&apos;s
+                  still the whole model.
+                </p>
+              </FadeIn>
+              <FadeIn delay={0.15}>
+                <p className="text-lg text-muted leading-relaxed max-w-2xl text-pretty">
+                  We work with founders, product teams, and established businesses who
+                  want a partner rather than a vendor — and who&apos;d rather have one
+                  senior team see the whole thing through than a rotating cast.
                 </p>
               </FadeIn>
             </div>
@@ -50,26 +60,64 @@ export default function AboutPage() {
         </div>
       </Section>
 
-      {/* Core Values */}
-      <Section className="bg-[#050510] py-32">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeIn className="text-center mb-24">
-            <h2 className="text-[#00cec9] font-bold tracking-widest uppercase text-sm mb-4">Our DNA</h2>
-            <h3 className="text-4xl md:text-6xl font-bold text-white">Core Values</h3>
+      {/* Values */}
+      <Section className="py-24 md:py-36">
+        <div className={CONTAINER}>
+          <FadeIn className="max-w-2xl mb-16 md:mb-20">
+            <p className="font-mono text-xs uppercase tracking-[0.18em] text-muted inline-flex items-center gap-3 mb-6">
+              <span aria-hidden className="h-px w-8 bg-accent" />
+              How we operate
+            </p>
+            <h2 className="font-display font-medium text-4xl md:text-5xl tracking-[-0.02em] text-ink leading-[1.02]">
+              Three rules we don&apos;t break.
+            </h2>
           </FadeIn>
-
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            {CORE_VALUES.map((value) => (
-              <StaggerItem key={value.title}>
-                <div className="glass p-10 rounded-3xl h-full relative overflow-hidden group hover:-translate-y-2 transition-transform duration-500 shadow-xl">
-                  <div className={`absolute -top-12 -right-12 w-40 h-40 bg-gradient-to-br ${value.gradient} opacity-20 blur-[40px] group-hover:scale-150 group-hover:opacity-30 transition-all duration-700`} />
-                  <IconTile name={value.icon} className="mb-8 relative z-10" />
-                  <h4 className="text-3xl font-bold text-white mb-4 relative z-10 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-white/50 transition-all">{value.title}</h4>
-                  <p className="text-[#8888a0] text-lg leading-relaxed relative z-10 font-light">{value.description}</p>
-                </div>
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-x-12 gap-y-10">
+            {CORE_VALUES.map((value, i) => (
+              <StaggerItem key={value.title} className="border-t-2 border-ink pt-6">
+                <span className="font-mono text-sm text-accent tnum">0{i + 1}</span>
+                <h3 className="font-display text-2xl md:text-3xl tracking-[-0.01em] text-ink mt-3 mb-4">
+                  {value.title}
+                </h3>
+                <p className="text-muted leading-relaxed text-pretty">{value.description}</p>
               </StaggerItem>
             ))}
           </StaggerContainer>
+        </div>
+      </Section>
+
+      {/* Founders */}
+      <Section className="py-24 md:py-36 bg-sand border-y border-line">
+        <div className={CONTAINER}>
+          <FadeIn className="max-w-2xl mb-16 md:mb-20">
+            <p className="font-mono text-xs uppercase tracking-[0.18em] text-muted inline-flex items-center gap-3 mb-6">
+              <span aria-hidden className="h-px w-8 bg-accent" />
+              The founders
+            </p>
+            <h2 className="font-display font-medium text-4xl md:text-5xl tracking-[-0.02em] text-ink leading-[1.02]">
+              Two people. Both on your project.
+            </h2>
+          </FadeIn>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16">
+            {TEAM.map((member, i) => (
+              <FadeIn key={member.name} delay={i * 0.1}>
+                <article className="flex flex-col sm:flex-row gap-6">
+                  <div className="relative w-full sm:w-40 shrink-0 aspect-square sm:aspect-[3/4] rounded-md border border-line bg-card overflow-hidden flex items-center justify-center">
+                    <span className="font-display text-6xl text-ink/15 select-none">
+                      {getInitials(member.name)}
+                    </span>
+                  </div>
+                  <div className="pt-1">
+                    <h3 className="font-display text-2xl md:text-3xl tracking-[-0.01em] text-ink">{member.name}</h3>
+                    <p className="font-mono text-xs uppercase tracking-[0.14em] text-accent mt-2 mb-4">
+                      {member.focus}
+                    </p>
+                    <p className="text-muted leading-relaxed text-pretty">{member.bio}</p>
+                  </div>
+                </article>
+              </FadeIn>
+            ))}
+          </div>
         </div>
       </Section>
     </>

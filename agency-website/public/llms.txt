@@ -1,0 +1,36 @@
+# RI Software
+
+> RI Software is a small, senior software studio founded in 2019 by Danish Salman
+> and Ahmed Saleem. We design and build web platforms, mobile apps, and AI
+> automation — two founders on every project, weekly demos, and fixed scope.
+
+## About
+
+- Two-person studio; both founders work directly on every engagement, start to finish.
+- Focused workload: a small number of projects at a time so each gets senior attention.
+- Weekly demos of running software so clients always see where the work stands.
+
+## Services
+
+- Web platforms — custom web application development.
+- Mobile apps — iOS and Android.
+- AI automation — workflow and process automation.
+- Product & design — from rough idea or finished spec through to shipped product.
+
+## Pages
+
+- [Home](https://ri-software-agency.vercel.app/): studio overview and selected work.
+- [Services](https://ri-software-agency.vercel.app/services): the four disciplines in detail.
+- [Work](https://ri-software-agency.vercel.app/portfolio): selected builds and case studies.
+- [About](https://ri-software-agency.vercel.app/about): who we are and why the studio is small.
+- [Contact](https://ri-software-agency.vercel.app/contact): start a build or ask a question.
+
+## Contact
+
+- Email: hello@risoftware.agency
+
+## Policy
+
+- AI and LLM crawlers may read and summarize this public marketing site.
+- Mirrors robots.txt: all public pages are allowed; there are no private or
+  disallowed paths on this site.

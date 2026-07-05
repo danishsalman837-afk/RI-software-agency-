@@ -19,14 +19,10 @@ export default function Process() {
           {PROCESS_STEPS.map((s, i) => {
             // Mobile: top border on every item except the first
             const mobileBorder = i !== 0 ? "border-t" : "";
-            // md 2-col: left border on odd items (col 2); top border on items
-            // starting a new row (index 2) instead of removing it
-            const mdBorder =
-              i % 2 === 1
-                ? "md:border-l md:border-t-0 md:pl-8"
-                : i > 0
-                  ? "md:border-t"
-                  : "md:border-t-0";
+            // md 2-col: compute row and column separators independently
+            const mdCol = i % 2 === 1 ? "md:border-l md:pl-8" : "";
+            const mdRow = i >= 2 ? "md:border-t" : "md:border-t-0";
+            const mdBorder = `${mdCol} ${mdRow}`;
             // lg 4-col: all items after the first get a left border, no top
             const lgBorder =
               i !== 0

@@ -110,10 +110,11 @@ const structuredData = {
         { "@type": "Person", name: "Ahmed Saleem" },
       ],
       email: "hello@risoftware.agency",
+      // TODO: Replace with real RI Software profile URLs (see SOCIAL_LINKS in data/index.ts).
       sameAs: [
-        "https://twitter.com",
-        "https://www.linkedin.com",
-        "https://github.com",
+        "https://twitter.com/risoftware",
+        "https://www.linkedin.com/company/risoftware",
+        "https://github.com/risoftware",
       ],
     },
     {

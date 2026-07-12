@@ -1,19 +1,22 @@
-import { CLIENT_LOGOS } from "@/data";
+import { INDUSTRIES } from "@/data";
 
 export default function LogoWall() {
   return (
-    <section className="py-16 border-b border-[#2a2a40] bg-[#050510]">
+    <section className="py-5 border-y border-[#E5E3DC] bg-[#F6F5F0]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <p className="text-center text-sm font-medium uppercase tracking-[0.2em] text-[#8888a0] mb-10">
-          Trusted by teams building what&apos;s next
-        </p>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-8 items-center">
-          {CLIENT_LOGOS.map((logo) => (
-            <div key={logo.name} className="flex items-center justify-center">
-              <span className="text-2xl font-bold tracking-tight text-[#8888a0]/60 hover:text-white transition-colors duration-300 select-none">
-                {logo.name}
+        <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-2">
+          <span className="font-mono text-xs font-medium uppercase tracking-[0.15em] text-[#6B6963]">
+            Built for teams in
+          </span>
+          {INDUSTRIES.map((industry, i) => (
+            <span key={industry.name} className="flex items-center gap-2">
+              <span className="font-mono text-xs font-medium uppercase tracking-[0.1em] text-[#1A1918]">
+                {industry.name}
               </span>
-            </div>
+              {i < INDUSTRIES.length - 1 && (
+                <span className="text-[#C1432E] text-xs" aria-hidden="true">•</span>
+              )}
+            </span>
           ))}
         </div>
       </div>

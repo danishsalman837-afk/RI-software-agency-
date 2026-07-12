@@ -10,25 +10,27 @@ export interface NavLink {
 export interface ServiceCard {
   icon: IconKey;
   title: string;
+  number: string;
   description: string;
   features: string[];
-  gradient: string;
+  stack: string[];
 }
 
 export interface PortfolioItem {
   id: number;
   title: string;
   category: string;
+  year: string;
   description: string;
   image: string;
   tags: string[];
-  gradient: string;
 }
 
 export interface TeamMember {
   name: string;
   role: string;
-  image: string;
+  initials: string;
+  focus: string;
 }
 
 export interface Stat {
@@ -39,11 +41,12 @@ export interface Stat {
 export interface ContactFormData {
   name: string;
   email: string;
+  projectType: string;
+  budgetRange: string;
   message: string;
 }
 
 export interface WhyChooseUsItem {
-  icon: IconKey;
   title: string;
   description: string;
 }
@@ -52,7 +55,6 @@ export interface CoreValue {
   icon: IconKey;
   title: string;
   description: string;
-  gradient: string;
 }
 
 export interface Testimonial {
@@ -78,4 +80,8 @@ export interface SocialLink {
   label: string;
   href: string;
   icon: SocialKey;
+}
+
+export interface IndustryLabel {
+  name: string;
 }

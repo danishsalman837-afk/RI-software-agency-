@@ -1,10 +1,9 @@
-import { PageHeader, Section, FadeIn, ContactForm, Icon } from "@/components";
+import { PageHeader, Section, FadeIn, ContactForm } from "@/components";
 import { TEAM } from "@/data";
-import { getInitials } from "@/lib/utils";
 
 export const metadata = {
-  title: "Contact Us | RI Software Agency",
-  description: "Get in touch with RI Software Agency to discuss your next digital project. Connect directly with our founders.",
+  title: "Contact Us — RI Software Studio",
+  description: "Get in touch with RI Software to discuss your next digital project. Connect directly with the founders.",
 };
 
 export default function ContactPage() {
@@ -12,68 +11,61 @@ export default function ContactPage() {
     <>
       <PageHeader 
         title="Let's Talk" 
-        subtitle="Ready to start your next project? We'd love to hear from you. Reach out to our founders directly or fill out the form."
+        subtitle="Ready to start a build? Reach out to the founders directly or fill out our project intake form below."
       />
 
-      <Section className="bg-[#050510] py-32">
+      <Section className="bg-[#F6F5F0] py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
             {/* Contact Info */}
-            <div>
+            <div className="lg:col-span-6">
               <FadeIn>
-                <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">
-                  Get in touch with our team
+                <h2 className="font-[family-name:var(--font-instrument-serif)] text-4xl md:text-5xl text-[#1A1918] mb-6">
+                  Work directly with the partners.
                 </h2>
-                <p className="text-[#8888a0] text-xl mb-16 leading-relaxed font-light">
-                  Whether you have a complete project specification or just a rough idea on a napkin, we&apos;re here to help you bring it to life. We work with clients globally.
+                <p className="text-[#6B6963] text-lg mb-12 leading-relaxed font-light">
+                  Whether you have a fully drafted project specification or a rough napkin sketch, we are ready to discuss the engineering and product trade-offs. We work with teams globally.
                 </p>
 
-                <div className="space-y-10">
+                <div className="space-y-8">
                   {/* Founder Contacts */}
-                  <h3 className="text-2xl font-bold text-white border-b border-[#2a2a40] pb-4 mb-6">Direct Contacts</h3>
+                  <span className="block font-mono text-xs font-semibold uppercase tracking-[0.15em] text-[#6B6963] border-b border-[#E5E3DC] pb-3 mb-6">
+                    Partners
+                  </span>
                   
-                  {TEAM.map((member) => (
-                    <div key={member.name} className="flex items-center gap-6 p-6 rounded-2xl bg-[#0d0d1a] border border-[#2a2a40] hover:border-[#6c5ce7]/50 transition-colors group">
-                      <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#6c5ce7] to-[#00cec9] flex items-center justify-center text-white text-xl font-bold shadow-lg group-hover:scale-110 transition-transform duration-300">
-                        {getInitials(member.name)}
-                      </div>
-                      <div>
-                        <h4 className="text-white font-bold text-xl mb-1">{member.name}</h4>
-                        <p className="text-[#8888a0] mb-2">{member.role}</p>
-                        <a href={`mailto:${member.name === 'Danish Salman' ? 'danishsalman234@gmail.com' : 'flyluckyfire@gmail.com'}`} className="text-[#6c5ce7] hover:text-white transition-colors font-medium">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    {TEAM.map((member) => (
+                      <div key={member.name} className="border border-[#E5E3DC] bg-white rounded-lg p-6 flex flex-col justify-between group hover:border-[#C1432E] transition-colors duration-150">
+                        <div>
+                          <div className="w-12 h-12 rounded-full border border-[#E5E3DC] bg-[#F6F5F0] flex items-center justify-center font-mono text-sm text-[#1A1918] mb-4">
+                            {member.initials}
+                          </div>
+                          <h4 className="text-base font-semibold text-[#1A1918] mb-1">{member.name}</h4>
+                          <p className="text-xs font-mono text-[#C1432E] uppercase tracking-wider mb-4">{member.role}</p>
+                        </div>
+                        <a 
+                          href={`mailto:${member.name === 'Danish Salman' ? 'danishsalman234@gmail.com' : 'flyluckyfire@gmail.com'}`} 
+                          className="text-xs text-[#6B6963] hover:text-[#C1432E] transition-colors font-mono"
+                        >
                           {member.name === 'Danish Salman' ? 'danishsalman234@gmail.com' : 'flyluckyfire@gmail.com'}
                         </a>
                       </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
 
                   <div className="pt-8">
-                    <h3 className="text-2xl font-bold text-white border-b border-[#2a2a40] pb-4 mb-8">General Inquiries</h3>
+                    <span className="block font-mono text-xs font-semibold uppercase tracking-[0.15em] text-[#6B6963] border-b border-[#E5E3DC] pb-3 mb-6">
+                      Direct Inquiries
+                    </span>
                     
-                    <div className="flex items-start gap-6 mb-8">
-                      <div className="w-14 h-14 rounded-2xl bg-[#00cec9]/10 text-[#00cec9] flex items-center justify-center shrink-0">
-                        <Icon name="mail" className="w-6 h-6" />
+                    <div className="space-y-4">
+                      <div>
+                        <span className="block font-mono text-[10px] text-[#9C9890] uppercase tracking-wider mb-1">General email</span>
+                        <a href="mailto:danishsalman234@gmail.com" className="text-[#1A1918] hover:text-[#C1432E] transition-colors">danishsalman234@gmail.com</a>
                       </div>
                       <div>
-                        <h4 className="text-white font-bold text-xl mb-2">Email Us</h4>
-                        <p className="text-[#8888a0] text-lg">
-                          <a href="mailto:danishsalman234@gmail.com" className="hover:text-white transition-colors block mb-1">danishsalman234@gmail.com</a>
-                          <a href="mailto:flyluckyfire@gmail.com" className="hover:text-white transition-colors block">flyluckyfire@gmail.com</a>
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-6">
-                      <div className="w-14 h-14 rounded-2xl bg-[#fd79a8]/10 text-[#fd79a8] flex items-center justify-center shrink-0">
-                        <Icon name="phone" className="w-6 h-6" />
-                      </div>
-                      <div>
-                        <h4 className="text-white font-bold text-xl mb-2">Call Us</h4>
-                        <p className="text-[#8888a0] text-lg">
-                          <a href="tel:03200430832" className="hover:text-white transition-colors block mb-1">0320 0430832</a>
-                          <a href="tel:03254864702" className="hover:text-white transition-colors block mb-1">0325 4864702</a>
-                          <span className="text-sm">Mon-Fri from 9am to 6pm (Global)</span>
-                        </p>
+                        <span className="block font-mono text-[10px] text-[#9C9890] uppercase tracking-wider mb-1">Call / message</span>
+                        <a href="tel:03200430832" className="text-[#1A1918] hover:text-[#C1432E] transition-colors">0320 0430832</a>
                       </div>
                     </div>
                   </div>
@@ -82,15 +74,14 @@ export default function ContactPage() {
             </div>
 
             {/* Contact Form */}
-            <div className="lg:sticky lg:top-32">
+            <div className="lg:col-span-6 lg:sticky lg:top-24">
               <FadeIn direction="left" delay={0.2}>
-                <div className="relative">
-                  <div className="absolute -inset-1 bg-gradient-to-br from-[#6c5ce7] to-[#00cec9] rounded-[2.5rem] blur-xl opacity-20" />
-                  <div className="relative rounded-[2rem] overflow-hidden shadow-2xl bg-[#050510] border border-[#2a2a40]">
-                    <div className="bg-[#1a1a2e] px-10 py-8 border-b border-[#2a2a40]">
-                      <h3 className="text-2xl font-bold text-white">Send us a message</h3>
-                      <p className="text-[#8888a0] mt-2">We typically reply within 24 hours.</p>
-                    </div>
+                <div className="border border-[#E5E3DC] bg-white rounded-xl overflow-hidden shadow-[0_1px_3px_rgba(0,0,0,0.02)]">
+                  <div className="bg-[#F6F5F0] px-8 py-6 border-b border-[#E5E3DC]">
+                    <h3 className="font-[family-name:var(--font-instrument-serif)] text-2xl text-[#1A1918]">Send us a message</h3>
+                    <p className="text-xs text-[#6B6963] mt-1 font-mono uppercase tracking-wider">Project intake / 24hr response</p>
+                  </div>
+                  <div className="p-8 bg-white">
                     <ContactForm />
                   </div>
                 </div>

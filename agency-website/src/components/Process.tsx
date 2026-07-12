@@ -1,35 +1,31 @@
 import { Section, FadeIn, StaggerContainer, StaggerItem } from "./Animations";
-import SectionHeading from "./SectionHeading";
-import { Icon } from "./Icon";
 import { PROCESS_STEPS } from "@/data";
 
 export default function Process() {
   return (
-    <Section className="bg-[#050510] py-24 md:py-32">
+    <Section id="process" className="section-dark py-24 md:py-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <FadeIn className="mb-20">
-          <SectionHeading
-            eyebrow="How We Work"
-            eyebrowColor="text-[#00cec9]"
-            title="A Process Built for Results"
-            subtitle="A clear, transparent path from first conversation to launch — so you always know what's happening and why."
-          />
+        <FadeIn className="mb-16">
+          <p className="font-mono text-xs font-medium uppercase tracking-[0.15em] text-[#9C9890] mb-5">
+            — How we work
+          </p>
+          <h2 className="font-[family-name:var(--font-instrument-serif)] text-4xl md:text-5xl lg:text-6xl text-[#F6F5F0] mb-6 leading-[1.1]">
+            A process you can actually watch.
+          </h2>
+          <p className="text-lg md:text-xl text-[#9C9890] leading-relaxed max-w-2xl">
+            Four phases, weekly demos, and no black boxes. You always know what we&apos;re doing and why.
+          </p>
         </FadeIn>
 
-        <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-[#2A2825]">
           {PROCESS_STEPS.map((s) => (
             <StaggerItem key={s.step}>
-              <div className="relative h-full glass rounded-3xl p-8 group hover:-translate-y-2 transition-transform duration-500">
-                <div className="flex items-center justify-between mb-6">
-                  <div className="w-14 h-14 rounded-xl bg-[#1a1a2e] border border-[#2a2a40] flex items-center justify-center text-[#a29bfe] group-hover:border-[#6c5ce7] transition-colors duration-300">
-                    <Icon name={s.icon} className="w-6 h-6" />
-                  </div>
-                  <span className="text-5xl font-extrabold text-white/5 group-hover:text-[#6c5ce7]/20 transition-colors duration-300">
-                    {s.step}
-                  </span>
-                </div>
-                <h4 className="text-xl font-bold text-white mb-3">{s.title}</h4>
-                <p className="text-[#8888a0] leading-relaxed">{s.description}</p>
+              <div className="bg-[#121110] p-8 h-full group">
+                <span className="block font-mono text-5xl font-bold text-[#2A2825] group-hover:text-[#C1432E]/30 transition-colors duration-300 mb-6">
+                  {s.step}
+                </span>
+                <h4 className="text-xl font-semibold text-[#F6F5F0] mb-3">{s.title}</h4>
+                <p className="text-[#9C9890] leading-relaxed text-sm">{s.description}</p>
               </div>
             </StaggerItem>
           ))}

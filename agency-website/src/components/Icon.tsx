@@ -29,7 +29,7 @@ export function IconTile({
 }) {
   return (
     <div
-      className={`flex-shrink-0 w-14 h-14 rounded-xl bg-[#1a1a2e] border border-[#2a2a40] flex items-center justify-center text-[#a29bfe] transition-all duration-300 ${className}`}
+      className={`flex-shrink-0 w-14 h-14 rounded-xl bg-[#F6F5F0] border border-[#E5E3DC] flex items-center justify-center text-[#1A1918] transition-all duration-150 ${className}`}
     >
       <Icon name={name} className="w-6 h-6" />
     </div>

@@ -2,8 +2,8 @@ import { PageHeader, Section, FadeIn, StaggerContainer, StaggerItem, IconTile } 
 import { CORE_VALUES } from "@/data";
 
 export const metadata = {
-  title: "About Us | RI Software Agency",
-  description: "Learn about our 5+ years of experience, our mission, our team, and how we build world-class digital products.",
+  title: "About Us — RI Software Studio",
+  description: "Learn about our experience, our mission, and how we build world-class digital products.",
 };
 
 export default function AboutPage() {
@@ -11,38 +11,36 @@ export default function AboutPage() {
     <>
       <PageHeader 
         title="Who We Are" 
-        subtitle="We are a team of passionate engineers, designers, and strategists with over 5 years of experience in building exceptional digital products."
+        subtitle="We are a small, focused team of engineers and designers with a single objective: to build the software your business actually runs on."
       />
 
       {/* Mission Section */}
-      <Section className="bg-[#0d0d1a] border-y border-[#2a2a40] py-32">
+      <Section className="bg-[#F6F5F0] border-y border-[#E5E3DC] py-24 md:py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-            <FadeIn direction="right" className="order-2 lg:order-1 relative h-[600px] rounded-[3rem] overflow-hidden gradient-border p-1 shadow-[0_0_50px_rgba(108,92,231,0.15)]">
-              <div className="absolute inset-1 bg-[#1a1a2e] rounded-[2.8rem] overflow-hidden">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(108,92,231,0.25),transparent_55%),radial-gradient(circle_at_80%_80%,rgba(0,206,201,0.2),transparent_55%)]" />
-                <div className="absolute inset-0 opacity-[0.08] bg-[linear-gradient(rgba(255,255,255,0.6)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.6)_1px,transparent_1px)] [background-size:40px_40px]" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#050510] via-[#050510]/50 to-transparent" />
-                <div className="absolute bottom-10 left-10 right-10">
-                  <div className="glass p-8 rounded-2xl backdrop-blur-xl border border-white/20 shadow-2xl">
-                    <p className="text-2xl font-medium text-white mb-3 italic">&ldquo;Innovation distinguishes between a leader and a follower.&rdquo;</p>
-                    <p className="text-[#8888a0] font-bold">— Steve Jobs</p>
-                  </div>
-                </div>
-              </div>
-            </FadeIn>
-            
-            <div className="order-1 lg:order-2">
-              <FadeIn>
-                <h2 className="text-[#6c5ce7] font-bold tracking-widest uppercase text-sm mb-4">Our Mission</h2>
-                <h3 className="text-4xl md:text-6xl font-bold text-white mb-8 leading-tight">
-                  Empowering Businesses Through Technology
-                </h3>
-                <p className="text-[#8888a0] text-xl mb-8 leading-relaxed font-light">
-                  For the past 5 years, RI Software Agency has operated with a simple belief: software should not just solve problems, it should create new possibilities. We bridge the gap between complex technical challenges and elegant, user-centric solutions.
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+            <div className="lg:col-span-6 order-2 lg:order-1 relative rounded-2xl overflow-hidden border border-[#E5E3DC] bg-white p-8">
+              <div className="absolute inset-0 bg-[#F6F5F0]/30" />
+              <div className="relative z-10">
+                <p className="font-[family-name:var(--font-instrument-serif)] text-2xl md:text-3xl text-[#1A1918] mb-6 italic leading-relaxed">
+                  &ldquo;Most software ships late, over budget, and built by people you never meet. We started RI to prove it doesn&apos;t have to work that way.&rdquo;
                 </p>
-                <p className="text-[#8888a0] text-xl leading-relaxed font-light">
-                  Led by Founding Partners Danish Salman and Ahmed Saleem, our team brings together diverse expertise from top tech environments to deliver enterprise-grade architecture, stunning interfaces, and scalable infrastructure for startups and global enterprises alike.
+                <p className="font-mono text-xs text-[#6B6963] uppercase tracking-wider">— RI Studio Manifest</p>
+              </div>
+            </div>
+            
+            <div className="lg:col-span-6 order-1 lg:order-2">
+              <FadeIn>
+                <span className="font-mono text-xs font-semibold uppercase tracking-[0.15em] text-[#6B6963] block mb-4">
+                  — OUR MISSION
+                </span>
+                <h3 className="font-[family-name:var(--font-instrument-serif)] text-4xl sm:text-5xl text-[#1A1918] mb-8 leading-[1.1]">
+                  Empowering businesses through software that works.
+                </h3>
+                <p className="text-[#6B6963] text-lg mb-6 leading-relaxed font-light">
+                  For the past 5 years, RI Software has operated with a simple belief: software should not just solve problems, it should create new structural advantages. We bridge the gap between complex engineering challenges and elegant, human-centric design.
+                </p>
+                <p className="text-[#6B6963] text-lg leading-relaxed font-light">
+                  Led by Founding Partners Danish Salman and Ahmed Saleem, we work directly on every engagement. There are no account managers relaying messages, only direct lines to the people writing the code.
                 </p>
               </FadeIn>
             </div>
@@ -51,21 +49,26 @@ export default function AboutPage() {
       </Section>
 
       {/* Core Values */}
-      <Section className="bg-[#050510] py-32">
+      <Section className="bg-[#F6F5F0] py-24 md:py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeIn className="text-center mb-24">
-            <h2 className="text-[#00cec9] font-bold tracking-widest uppercase text-sm mb-4">Our DNA</h2>
-            <h3 className="text-4xl md:text-6xl font-bold text-white">Core Values</h3>
+          <FadeIn className="mb-16">
+            <span className="font-mono text-xs font-semibold uppercase tracking-[0.15em] text-[#6B6963] block mb-3">
+              — OUR DNA
+            </span>
+            <h3 className="font-[family-name:var(--font-instrument-serif)] text-4xl md:text-5xl text-[#1A1918]">
+              Core Values
+            </h3>
           </FadeIn>
 
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {CORE_VALUES.map((value) => (
               <StaggerItem key={value.title}>
-                <div className="glass p-10 rounded-3xl h-full relative overflow-hidden group hover:-translate-y-2 transition-transform duration-500 shadow-xl">
-                  <div className={`absolute -top-12 -right-12 w-40 h-40 bg-gradient-to-br ${value.gradient} opacity-20 blur-[40px] group-hover:scale-150 group-hover:opacity-30 transition-all duration-700`} />
-                  <IconTile name={value.icon} className="mb-8 relative z-10" />
-                  <h4 className="text-3xl font-bold text-white mb-4 relative z-10 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-white/50 transition-all">{value.title}</h4>
-                  <p className="text-[#8888a0] text-lg leading-relaxed relative z-10 font-light">{value.description}</p>
+                <div className="border border-[#E5E3DC] bg-white p-8 rounded-xl h-full flex flex-col justify-between hover:border-[#C1432E] transition-colors duration-150 relative overflow-hidden group">
+                  <div>
+                    <IconTile name={value.icon} className="mb-6 bg-[#F6F5F0] border-[#E5E3DC]" />
+                    <h4 className="font-[family-name:var(--font-instrument-serif)] text-2xl text-[#1A1918] mb-3">{value.title}</h4>
+                    <p className="text-[#6B6963] text-sm leading-relaxed font-light">{value.description}</p>
+                  </div>
                 </div>
               </StaggerItem>
             ))}

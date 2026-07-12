@@ -10,9 +10,6 @@ interface SectionProps {
 }
 
 export function Section({ children, className = "", id }: SectionProps) {
-  // Padding is intentionally NOT hardcoded here — each section sets its own
-  // vertical rhythm via className. Hardcoding py-* caused conflicting padding
-  // utilities (e.g. `py-20 md:py-32` fighting a caller's `py-24`).
   return (
     <section id={id} className={`relative ${className}`}>
       {children}
@@ -34,10 +31,10 @@ export function FadeIn({
   fullWidth?: boolean;
 }) {
   const directions = {
-    up: { y: 40, x: 0 },
-    down: { y: -40, x: 0 },
-    left: { x: 40, y: 0 },
-    right: { x: -40, y: 0 },
+    up: { y: 30, x: 0 },
+    down: { y: -30, x: 0 },
+    left: { x: 30, y: 0 },
+    right: { x: -30, y: 0 },
     none: { x: 0, y: 0 },
   };
 
@@ -48,9 +45,9 @@ export function FadeIn({
     <motion.div
       initial={{ opacity: 0, ...offset }}
       whileInView={{ opacity: 1, x: 0, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
+      viewport={{ once: true, margin: "-80px" }}
       transition={{
-        duration: reduce ? 0.2 : 0.7,
+        duration: reduce ? 0.2 : 0.6,
         ease: [0.25, 0.1, 0.25, 1],
         delay: reduce ? 0 : delay,
       }}
@@ -72,11 +69,11 @@ export function StaggerContainer({
     <motion.div
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-100px" }}
+      viewport={{ once: true, margin: "-80px" }}
       variants={{
         visible: {
           transition: {
-            staggerChildren: 0.15,
+            staggerChildren: 0.1,
           },
         },
       }}
@@ -98,11 +95,11 @@ export function StaggerItem({
   return (
     <motion.div
       variants={{
-        hidden: { opacity: 0, y: reduce ? 0 : 30 },
+        hidden: { opacity: 0, y: reduce ? 0 : 20 },
         visible: {
           opacity: 1,
           y: 0,
-          transition: { duration: reduce ? 0.2 : 0.6, ease: [0.25, 0.1, 0.25, 1] },
+          transition: { duration: reduce ? 0.2 : 0.5, ease: [0.25, 0.1, 0.25, 1] },
         },
       }}
       className={className}
@@ -121,16 +118,14 @@ export function PageHeader({
 }) {
   return (
     <Section className="pt-32 md:pt-48 pb-10 md:pb-20 overflow-hidden">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-[400px] bg-gradient-to-b from-[#6c5ce7]/20 to-transparent blur-[100px] pointer-events-none rounded-full" />
-      
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
         <FadeIn>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6">
+          <h1 className="font-[family-name:var(--font-instrument-serif)] text-4xl md:text-6xl lg:text-7xl text-[#1A1918] mb-6 leading-[1.1]">
             {title}
           </h1>
         </FadeIn>
         <FadeIn delay={0.2}>
-          <p className="text-[#8888a0] text-lg md:text-xl max-w-2xl mx-auto">
+          <p className="text-[#6B6963] text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
             {subtitle}
           </p>
         </FadeIn>

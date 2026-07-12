@@ -1,48 +1,58 @@
 @import "tailwindcss";
 
-/* Don't scan design docs for class names — they hold the OLD purple palette
+/* Don't scan design docs for class names — they hold an OLD palette
    and would otherwise leak dead utilities into the stylesheet. */
 @source not "../../docs";
 
 /* ============================================================
-   RI Software — Editorial design system
-   Warm paper, near-black ink, a single oxblood accent.
-   No gradients. No glow. Depth comes from type, space, and rules.
+   RI Software — Premium SaaS design system
+   Slate-50 canvas, near-black ink, one indigo→violet accent.
+   Depth comes from soft tinted shadows and 1px translucent lines.
+   Semantic token NAMES are preserved so every existing route
+   inherits this palette without edits (DRY, non-breaking).
    ============================================================ */
 
 @theme {
-  /* Surfaces — one warm neutral family, no cool/warm mixing */
-  --color-paper: #f4f0e9; /* base background — warm bone */
-  --color-sand: #ebe4d7; /* alternate band / recessed surface */
-  --color-card: #fbf9f4; /* raised surface */
-  --color-noir: #17130d; /* committed dark band background */
-  --color-noir-2: #211b13; /* dark band raised surface */
+  /* Surfaces — cool slate neutral family */
+  --color-paper: #f8fafc; /* base background — slate-50 */
+  --color-sand: #f1f5f9; /* alternate band / recessed surface — slate-100 */
+  --color-card: #ffffff; /* raised surface */
+  --color-noir: #0a0a0a; /* committed dark band background */
+  --color-noir-2: #171717; /* dark band raised surface */
 
-  /* Ink — text on paper */
-  --color-ink: #191510; /* primary text */
-  --color-muted: #5f574b; /* secondary text (AA on paper) */
-  --color-faint: #8a8072; /* meta / tertiary (large only) */
+  /* Ink — text */
+  --color-ink: #0a0a0a; /* primary text */
+  --color-muted: #737373; /* secondary text (AA on paper) */
+  --color-faint: #a3a3a3; /* meta / tertiary (large only) */
 
-  /* Lines */
-  --color-line: #d8cfbe; /* hairline on paper */
-  --color-line-strong: #c4b9a4;
+  /* Lines — hairlines at low opacity read as depth, not borders */
+  --color-line: #e2e8f0; /* slate-200 */
+  --color-line-strong: #cbd5e1; /* slate-300 */
 
-  /* Accent — oxblood, used sparingly (~5% of the page) */
-  --color-accent: #b4432b;
-  --color-accent-deep: #8e3320; /* pressed / hover */
-  --color-accent-warm: #db6a46; /* accent legible on dark bands */
+  /* Accent — indigo→violet. Solid indigo where a single color is needed. */
+  --color-accent: #4f46e5; /* indigo-600 */
+  --color-accent-deep: #4338ca; /* indigo-700 — pressed / hover */
+  --color-accent-warm: #7c3aed; /* violet-600 — gradient end / accent on dark */
+  --color-ring: #6366f1; /* indigo-500 — focus ring */
 
-  /* Radius scale — tighter than the default rounded-everything look */
-  --radius-xs: 2px;
-  --radius-sm: 4px;
-  --radius-md: 8px;
+  /* Radius scale — softer, SaaS-appropriate */
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+
+  /* Premium tinted shadow (slate-tinted, not pure black) */
+  --shadow-premium: 0 20px 40px -12px rgba(15, 23, 42, 0.12),
+    0 4px 12px -4px rgba(15, 23, 42, 0.08);
+  --shadow-glow: 0 8px 24px -6px rgba(79, 70, 229, 0.45);
 }
 
 /* Fonts wired from next/font (see layout.tsx). Kept inline so utilities
    resolve straight to the underlying next/font variable. */
 @theme inline {
-  --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
-  --font-sans: var(--font-manrope), system-ui, -apple-system, sans-serif;
+  --font-display: var(--font-syne), "Segoe UI", system-ui, sans-serif;
+  --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
   --font-mono: var(--font-space-mono), ui-monospace, "SFMono-Regular", monospace;
 }
 
@@ -71,10 +81,9 @@ body {
   }
 }
 
-/* Display face defaults — Fraunces reads best with optical sizing on */
+/* Display face defaults — Syne reads best tight and heavy */
 .font-display {
-  font-optical-sizing: auto;
-  font-feature-settings: "ss01";
+  letter-spacing: -0.02em;
 }
 
 /* Tabular figures for any data / metrics */
@@ -86,18 +95,18 @@ body {
 /* ---- Selection & scrollbar ---- */
 ::selection {
   background: var(--color-accent);
-  color: var(--color-paper);
+  color: #ffffff;
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 12px;
 }
 ::-webkit-scrollbar-track {
   background: var(--color-sand);
 }
 ::-webkit-scrollbar-thumb {
   background: var(--color-line-strong);
-  border: 2px solid var(--color-sand);
+  border: 3px solid var(--color-sand);
   border-radius: 999px;
 }
 ::-webkit-scrollbar-thumb:hover {
@@ -106,11 +115,11 @@ body {
 
 /* ---- Keyboard focus (accessibility, not optional) ---- */
 :focus-visible {
-  outline: 2px solid var(--color-accent);
-  outline-offset: 3px;
+  outline: 2px solid var(--color-ring);
+  outline-offset: 2px;
   border-radius: var(--radius-xs);
 }
-/* Dark bands get a legible focus ring */
+/* Dark bands keep the same indigo ring — it reads well on #0a0a0a */
 .on-dark :focus-visible {
   outline-color: var(--color-accent-warm);
 }
@@ -124,7 +133,7 @@ body {
   z-index: 100;
   padding: 0.75rem 1.25rem;
   background: var(--color-ink);
-  color: var(--color-paper);
+  color: #ffffff;
   font-family: var(--font-mono);
   font-size: 0.75rem;
   letter-spacing: 0.08em;
@@ -145,9 +154,13 @@ body {
   color: var(--color-muted);
 }
 
-/* ---- Animated link underline ---- */
+/* ---- Animated link underline (now indigo→violet) ---- */
 .link-underline {
-  background-image: linear-gradient(var(--color-accent), var(--color-accent));
+  background-image: linear-gradient(
+    90deg,
+    var(--color-accent),
+    var(--color-accent-warm)
+  );
   background-size: 0% 1.5px;
   background-position: 0 100%;
   background-repeat: no-repeat;
@@ -158,16 +171,69 @@ body {
   background-size: 100% 1.5px;
 }
 
-/* ---- Paper grain: subtle tooth so surfaces aren't sterile-flat ---- */
-.grain::after {
+/* ---- Premium tinted shadow utility ---- */
+.shadow-premium {
+  box-shadow: var(--shadow-premium);
+}
+
+/* ---- Indigo→violet gradient primitives ---- */
+.gradient-accent {
+  background-image: linear-gradient(
+    120deg,
+    var(--color-accent) 0%,
+    var(--color-accent-warm) 100%
+  );
+}
+.gradient-text {
+  background-image: linear-gradient(
+    120deg,
+    var(--color-accent) 0%,
+    var(--color-accent-warm) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+/* Hairline top gradient border for the dark CTA band */
+.gradient-top-border {
+  position: relative;
+}
+.gradient-top-border::before {
   content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-accent),
+    var(--color-accent-warm),
+    transparent
+  );
+}
+
+/* ---- Soft ambient glow blob for hero / CTA backgrounds ---- */
+.glow-blob {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(80px);
   opacity: 0.5;
-  mix-blend-mode: multiply;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ---- Card hover lift (GPU-friendly: transform + shadow only) ---- */
+.card-lift {
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1),
+    box-shadow 0.3s cubic-bezier(0.25, 1, 0.5, 1),
+    border-color 0.3s ease;
+  will-change: transform;
+}
+@media (hover: hover) {
+  .card-lift:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-premium);
+  }
 }
 
 /* ---- Reveal helper for CSS-only staggered rows ---- */

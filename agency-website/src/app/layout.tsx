@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, Manrope, Space_Mono } from "next/font/google";
+import { Syne, Inter, Space_Mono } from "next/font/google";
 import "./globals.css";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { Navbar, Footer } from "@/components";
@@ -14,22 +14,22 @@ const GSC_VERIFICATION =
   process.env.NEXT_PUBLIC_GSC_VERIFICATION ??
   "2g2LTqikJu8mdLCmFgN5rJH4xvkq8AwdEkPsGXwZS2w";
 
-// Display serif — characterful, editorial. Variable weight + true italic.
-const fraunces = Fraunces({
+// Display — Syne: tight, geometric, high-contrast headings.
+const syne = Syne({
   subsets: ["latin"],
-  variable: "--font-fraunces",
+  variable: "--font-syne",
   display: "swap",
-  style: ["normal", "italic"],
+  weight: ["500", "600", "700", "800"],
 });
 
-// Body / UI grotesk — clean, neutral, not Inter.
-const manrope = Manrope({
+// Body / UI — Inter: highly legible, neutral.
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-manrope",
+  variable: "--font-inter",
   display: "swap",
 });
 
-// Mono — labels, indices, tags, code. Signals "software" without cliché.
+// Mono — labels, indices, terminal UI. Signals "software" without cliché.
 const spaceMono = Space_Mono({
   subsets: ["latin"],
   variable: "--font-space-mono",
@@ -89,7 +89,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#f4f0e9",
+  themeColor: "#f8fafc",
   colorScheme: "light",
 };
 
@@ -136,11 +136,17 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${fraunces.variable} ${manrope.variable} ${spaceMono.variable} antialiased`}
+      className={`${syne.variable} ${inter.variable} ${spaceMono.variable} antialiased`}
       suppressHydrationWarning
       data-scroll-behavior="smooth"
     >
-      <body className="grain min-h-screen flex flex-col font-sans" suppressHydrationWarning>
+      <body className="min-h-screen flex flex-col font-sans" suppressHydrationWarning>
+        {/* Safety net: framer-motion reveal animations start at opacity:0 and
+            depend on client JS to reveal. If JS is disabled or blocked, force
+            the final (visible) state so the page is never blank. */}
+        <noscript>
+          <style>{`#main *{opacity:1 !important;transform:none !important}`}</style>
+        </noscript>
         <a href="#main" className="skip-link">
           Skip to content
         </a>

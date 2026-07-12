@@ -3,29 +3,35 @@ import { PROCESS_STEPS } from "@/data";
 
 export default function Process() {
   return (
-    <Section id="process" className="section-dark py-24 md:py-32">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <Section id="process" className="py-24 md:py-32 border-b border-[#262626] bg-[#0A0A0A]">
+      <div className="max-w-7xl mx-auto px-6">
         <FadeIn className="mb-16">
-          <p className="font-mono text-xs font-medium uppercase tracking-[0.15em] text-[#9C9890] mb-5">
-            — How we work
-          </p>
-          <h2 className="font-[family-name:var(--font-instrument-serif)] text-4xl md:text-5xl lg:text-6xl text-[#F6F5F0] mb-6 leading-[1.1]">
-            A process you can actually watch.
+          <span className="font-mono text-xs font-semibold text-[#06B6D4] block mb-3">
+            [04] // SYSTEM WORKFLOW
+          </span>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-4">
+            System Workflow Timeline
           </h2>
-          <p className="text-lg md:text-xl text-[#9C9890] leading-relaxed max-w-2xl">
-            Four phases, weekly demos, and no black boxes. You always know what we&apos;re doing and why.
+          <p className="text-sm text-[#8F8F8F] max-w-xl leading-relaxed">
+            A containerized sprint execution pipeline showing the exact milestones of each client engagement.
           </p>
         </FadeIn>
 
-        <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-[#2A2825]">
-          {PROCESS_STEPS.map((s) => (
-            <StaggerItem key={s.step}>
-              <div className="bg-[#121110] p-8 h-full group">
-                <span className="block font-mono text-5xl font-bold text-[#2A2825] group-hover:text-[#C1432E]/30 transition-colors duration-300 mb-6">
-                  {s.step}
-                </span>
-                <h4 className="text-xl font-semibold text-[#F6F5F0] mb-3">{s.title}</h4>
-                <p className="text-[#9C9890] leading-relaxed text-sm">{s.description}</p>
+        <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-[#262626] border border-[#262626]">
+          {PROCESS_STEPS.map((step) => (
+            <StaggerItem key={step.step} className="h-full">
+              <div className="bg-[#161616] p-8 h-full flex flex-col justify-between min-h-[220px] group hover:bg-[#1A1A1A] transition-colors duration-150">
+                <div>
+                  <span className="block font-mono text-xs font-semibold text-[#06B6D4] mb-4">
+                    PHASE_{step.step}
+                  </span>
+                  <h4 className="text-base font-bold text-white mb-3">
+                    [{step.title}]
+                  </h4>
+                  <p className="text-xs text-[#8F8F8F] leading-relaxed">
+                    {step.description}
+                  </p>
+                </div>
               </div>
             </StaggerItem>
           ))}

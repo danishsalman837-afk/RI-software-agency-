@@ -1,6 +1,6 @@
 export default function Eyebrow({
   children,
-  color = "text-[#6B6963]",
+  color = "text-[#8F8F8F]",
   className = "",
 }: {
   children: React.ReactNode;
@@ -8,8 +8,8 @@ export default function Eyebrow({
   className?: string;
 }) {
   return (
-    <p className={`font-mono text-xs font-medium uppercase tracking-[0.15em] ${color} ${className}`}>
-      — {children}
-    </p>
+    <span className={`font-mono text-xs font-semibold tracking-[0.1em] uppercase ${color} ${className}`}>
+      {children}
+    </span>
   );
 }

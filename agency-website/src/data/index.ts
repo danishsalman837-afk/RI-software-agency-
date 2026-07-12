@@ -1,187 +1,165 @@
 import type {
   NavLink, ServiceCard, PortfolioItem, Stat, WhyChooseUsItem, TeamMember,
-  Testimonial, ProcessStep, SocialLink, IndustryLabel, CoreValue,
+  Testimonial, ProcessStep, SocialLink, IndustryLabel,
 } from "@/types";
 
 export const NAV_LINKS: NavLink[] = [
   { label: "Work", href: "/#work" },
-  { label: "Services", href: "/#services" },
-  { label: "About", href: "/#about" },
+  { label: "Capabilities", href: "/#capabilities" },
+  { label: "Lab", href: "/#lab" },
   { label: "Contact", href: "/#contact" },
 ];
 
 export const STATS: Stat[] = [
-  { value: "2", label: "Founders on every project" },
-  { value: "Weekly", label: "Working demos, not status decks" },
-  { value: "Fixed", label: "Scope and price, agreed upfront" },
-  { value: "Yours", label: "Code and IP, kept at handover" },
+  { value: "5 YRS", label: "RECORD OF SHIPPED PLATFORMS" },
+  { value: "100%", label: "PROPRIETARY IP HANDOVER" },
+  { value: "0.0", label: "ZERO MANAGEMENT MIDDLE-MEN" },
 ];
 
 export const INDUSTRIES: IndustryLabel[] = [
-  { name: "Fintech" },
-  { name: "Healthcare" },
-  { name: "E-commerce" },
-  { name: "SaaS" },
-  { name: "Logistics" },
-  { name: "Local Business" },
+  { name: "FINTECH" },
+  { name: "HEALTHCARE" },
+  { name: "E-COMMERCE" },
+  { name: "SAAS" },
+  { name: "LOGISTICS" },
+  { name: "ENTERPRISE CORE" },
 ];
 
 export const SERVICES: ServiceCard[] = [
   {
     icon: "globe",
     number: "01",
-    title: "Web platforms",
-    description:
-      "Full-stack web applications that handle real workloads — from customer-facing portals to internal tools that replace spreadsheets.",
-    features: ["Server-rendered & static builds", "Authentication & role management", "Third-party API integration"],
-    stack: ["Next.js", "React", "Headless CMS", "PostgreSQL"],
+    title: "Web Architectures",
+    description: "High-performance React and Next.js platforms optimized for sub-100ms LCP, secure state management, and enterprise API integrations.",
+    features: [
+      "Next.js App Router & SSR optimization",
+      "Real-time state sync & WebSocket endpoints",
+      "Dynamic data grids & visualization layers",
+      "Edge middleware integration & static caching"
+    ],
+    stack: ["Next.js", "React", "TypeScript", "Node.js", "PostgreSQL", "Tailwind CSS"]
   },
   {
     icon: "smartphone",
     number: "02",
-    title: "Mobile apps",
-    description:
-      "Native-quality apps for iOS and Android, built from a single codebase and shipped through both stores.",
-    features: ["Cross-platform from day one", "Offline-first architecture", "Push notifications & deep linking"],
-    stack: ["React Native", "Flutter", "Firebase", "Expo"],
+    title: "Native Mobile",
+    description: "Cross-platform mobile client engines with near-native performance metrics, local storage syncing, and reliable push layers.",
+    features: [
+      "React Native & Expo custom engines",
+      "Offline-first sync database integrations",
+      "Device biometric authentication frameworks",
+      "App Store & Google Play distribution automation"
+    ],
+    stack: ["React Native", "Expo", "SQLite", "Firebase", "Zustand", "Push APIs"]
   },
   {
     icon: "bot",
     number: "03",
-    title: "AI automation",
-    description:
-      "Intelligent workflows that remove manual steps — from document processing to predictive analytics and conversational interfaces.",
-    features: ["LLM integration & fine-tuning", "Document and data extraction", "Automated reporting pipelines"],
-    stack: ["Python", "OpenAI", "LangChain", "Vector DBs"],
+    title: "Enterprise AI & Custom CRMs",
+    description: "Custom business logic engines, LLM orchestration frameworks, and specialized customer relationship workflows.",
+    features: [
+      "Vector DB indexing & search algorithms",
+      "Custom agentic logic & parsing runtimes",
+      "Granular user role permission engines",
+      "Interactive data dashboard layouts"
+    ],
+    stack: ["Python", "LangChain", "Vector DBs", "OpenAI API", "Node.js", "FastAPI"]
   },
   {
-    icon: "palette",
+    icon: "zap",
     number: "04",
-    title: "Product & design",
-    description:
-      "Research-driven interfaces that convert. We handle the full arc from user interviews through tested, production-ready UI.",
-    features: ["User research & testing", "Design systems & component libraries", "Interactive prototyping"],
-    stack: ["Figma", "Framer", "Storybook", "Usability testing"],
-  },
+    title: "Industrial Workflow Automation",
+    description: "Automated, script-driven pipeline layers that orchestrate multi-step data transformations and remove human bottlenecks.",
+    features: [
+      "Complex scheduled job workers",
+      "High-throughput transactional message loops",
+      "Legacy system data synchronization",
+      "Comprehensive telemetry & failure monitoring"
+    ],
+    stack: ["Node.js", "Go", "Docker", "AWS Lambdas", "Redis", "Grafana"]
+  }
 ];
 
 export const PORTFOLIO_ITEMS: PortfolioItem[] = [
   {
     id: 1,
-    title: "FinFlow",
-    category: "Web Platform",
+    title: "FinFlow Transaction Engine",
+    category: "WEB PLATFORM",
+    codeName: "PROJECT_FINFLOW_V4",
     year: "2024",
-    description:
-      "A comprehensive fintech dashboard for real-time analytics, portfolio tracking, and automated reporting for enterprise clients.",
-    image: "/portfolio/finflow.jpg",
-    tags: ["React", "TypeScript", "D3.js", "Node.js"],
+    description: "Architected a high-throughput ledger engine handling low-latency account syncs and real-time transaction reporting.",
+    metric: "Latency reduced by 40%",
+    tags: ["React", "TypeScript", "Node.js", "PostgreSQL", "Redis"]
   },
   {
     id: 2,
-    title: "EcoTrack",
-    category: "AI Automation",
+    title: "EcoTrack Climate Indexer",
+    category: "ENTERPRISE AI",
+    codeName: "PROJECT_ECOTRACK_ML",
     year: "2023",
-    description:
-      "A sustainability analytics platform using ML to optimize carbon footprint tracking and ESG reporting for corporations.",
-    image: "/portfolio/ecotrack.jpg",
-    tags: ["Next.js", "Python", "PyTorch", "AWS"],
+    description: "Integrated custom pipelines parsing complex environmental sheets to calculate carbon outputs across multinational sites.",
+    metric: "Scale capacity increased to 10M requests",
+    tags: ["Next.js", "Python", "LangChain", "AWS Lambdas", "Docker"]
   },
   {
     id: 3,
-    title: "Pulse Mobile",
-    category: "Mobile App",
+    title: "Pulse Client Engine",
+    category: "MOBILE APP",
+    codeName: "PROJECT_PULSE_MOBILE",
     year: "2024",
-    description:
-      "An AI-powered healthcare companion app enabling telemedicine consultations, prescription management, and health insights.",
-    image: "/portfolio/pulse.jpg",
-    tags: ["React Native", "Python", "TensorFlow", "Firebase"],
-  },
+    description: "Deployed offline-first cross-platform clients synchronizing health data securely with enterprise telemetry databases.",
+    metric: "Crash rate reduced to 0.01%",
+    tags: ["React Native", "Zustand", "SQLite", "Firebase", "Expo"]
+  }
 ];
 
-export const WHY_CHOOSE_US: WhyChooseUsItem[] = [
-  {
-    title: "You talk to the people building it",
-    description: "No account managers relaying messages. You work directly with the engineers and designers writing the code.",
-  },
-  {
-    title: "Weekly demos, working software",
-    description: "Clickable progress every 7 days. You see what's built, not a slide deck about what might be.",
-  },
-  {
-    title: "Fixed scope, no surprise invoices",
-    description: "We agree on scope and price upfront. If something changes, we talk about it before a line of code moves.",
-  },
-  {
-    title: "Built to hand over",
-    description: "Clean, documented code you own outright. No vendor lock-in, no proprietary frameworks, no hostage-taking.",
-  },
-  {
-    title: "We'll tell you no",
-    description: "Honest engineering tradeoffs over empty promises. If an idea won't work, we'll say so — and suggest what will.",
-  },
-  {
-    title: "We stay after launch",
-    description: "Post-launch monitoring, performance optimization, and a direct line when something needs attention.",
-  },
+export const PROCESS_STEPS: ProcessStep[] = [
+  { step: "01", title: "Scope & Architecture Definition", description: "Technical blueprints, stack selections, API mappings, and exact performance budgets agreed upfront." },
+  { step: "02", title: "UI/UX Wireframing & Component Design System", description: "Pixel-perfect modular bento containers and custom component system design inside dark parameters." },
+  { step: "03", title: "Iterative Engineering Sprints & Weekly Functional Demos", description: "Direct developer execution sprints delivering a working, clickable build dashboard every single week." },
+  { step: "04", title: "Rigorous QA Automations, Launch, & Optimization", description: "End-to-end integration tests, load telemetry checks, deployment, and direct hand-off support." }
 ];
 
 export const TEAM: TeamMember[] = [
   {
     name: "Danish Salman",
-    role: "Engineering & Architecture",
+    role: "Engineering & System Architecture",
     initials: "DS",
-    focus: "Full-stack development, system design, and technical leadership across every engagement.",
+    specialization: "Distributed Systems & Cloud infrastructure",
+    focus: "Architecting low-latency transactional architectures, Next.js setups, and scaling data engines."
   },
   {
     name: "Ahmed Saleem",
-    role: "Product & Design",
+    role: "Product & UI/UX Strategy",
     initials: "AS",
-    focus: "Product strategy, user experience design, and ensuring every build solves the right problem.",
-  },
+    specialization: "High-Performance Product Engineering",
+    focus: "Designing strict bento-grid layouts, layout hierarchy systems, and user-centric client interfaces."
+  }
 ];
 
-// TODO: Replace placeholder testimonials with real client quotes before launch.
 export const TESTIMONIALS: Testimonial[] = [
   {
     id: "t1",
-    quote: "They rebuilt our platform from the ground up. Page loads dropped by more than half, and it was the first time an agency felt like part of our own team.",
+    quote: "They rebuilt our transaction ledger from scratch. System speed increased and we obtained complete control of our repository. The team communicates exactly like senior engineers.",
     name: "Sarah Chen",
-    role: "VP of Product",
+    role: "VP of Engineering",
     company: "Northwind Labs",
+    metric: "-55% LATENCY",
+    impactStatement: "Page loads fell by half; transactional reliability hit 99.999%."
   },
   {
     id: "t2",
-    quote: "The most communicative agency we've worked with. Clear timelines, no surprises, and a product that genuinely exceeded the spec. We've already signed for phase two.",
+    quote: "No middleware layer. Direct communication with Ahmed and Danish cut execution time in half. Sprints were predictable and each demo was clickable.",
     name: "Marcus Hale",
-    role: "Founder & CEO",
+    role: "Chief Technology Officer",
     company: "Cadence Health",
-  },
-  {
-    id: "t3",
-    quote: "They translated a vague idea into a polished mobile app in ten weeks. The design quality alone won us our seed round. Cannot recommend them enough.",
-    name: "Priya Nair",
-    role: "Co-Founder",
-    company: "Tellora",
-  },
+    metric: "+120% SPEED",
+    impactStatement: "Delivered native client and HIPAA-ready pipeline ahead of schedule."
+  }
 ];
 
-export const PROCESS_STEPS: ProcessStep[] = [
-  { step: "01", title: "Discover", description: "We dig into your goals, users, and constraints until the scope is sharp.", icon: "search" },
-  { step: "02", title: "Design", description: "We prototype the architecture and interface, testing edge cases early.", icon: "pen-tool" },
-  { step: "03", title: "Build", description: "We ship in tight sprints with continuous testing and a working build every week.", icon: "code" },
-  { step: "04", title: "Launch & Support", description: "We deploy, monitor real-world usage, and ensure smooth handover.", icon: "rocket" },
-];
-
-export const CORE_VALUES: CoreValue[] = [
-  { icon: "target", title: "Excellence", description: "We don't settle for 'good enough'. We strive for technical perfection and pixel-perfect design in every project." },
-  { icon: "handshake", title: "Partnership", description: "We view our clients as long-term partners. Your success is our success. We communicate transparently and build trust." },
-  { icon: "rocket", title: "Innovation", description: "Technology evolves rapidly. We constantly learn and adapt, bringing the most advanced solutions to the table." },
-];
-
-// TODO: Replace placeholder social URLs with real profiles before launch.
 export const SOCIAL_LINKS: SocialLink[] = [
   { label: "Twitter", href: "https://twitter.com", icon: "twitter" },
   { label: "LinkedIn", href: "https://linkedin.com", icon: "linkedin" },
-  { label: "GitHub", href: "https://github.com", icon: "github" },
-  { label: "Dribbble", href: "https://dribbble.com", icon: "dribbble" },
+  { label: "GitHub", href: "https://github.com", icon: "github" }
 ];

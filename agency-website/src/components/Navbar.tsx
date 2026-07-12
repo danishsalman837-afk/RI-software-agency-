@@ -33,33 +33,29 @@ export default function Navbar() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-[#F6F5F0]/95 backdrop-blur-sm border-b border-[#E5E3DC] shadow-[0_1px_3px_rgba(0,0,0,0.04)]"
-          : "bg-transparent"
-      }`}
+      className={`fixed top-4 left-4 right-4 z-50 transition-all duration-300 border border-[#262626] bg-[#0A0A0A]/70 backdrop-blur-md`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo — Bold Monospace */}
-          <Link href="/" className="flex items-center group">
-            <span className="font-mono text-sm font-bold tracking-[0.05em] text-[#1A1918] uppercase">
-              RI Software
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="flex items-center justify-between h-14">
+          {/* Logo — Monospaced Typographic logo */}
+          <Link href="/" className="flex items-center">
+            <span className="font-mono text-sm font-bold tracking-[0.1em] text-white uppercase">
+              RI SOFTWARE
             </span>
           </Link>
 
-          {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-8">
+          {/* Center Links */}
+          <div className="hidden md:flex items-center gap-8 font-sans">
             {NAV_LINKS.map((link) => {
               const isActive = pathname === link.href || (link.href.startsWith("/#") && pathname === "/");
               return (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`relative text-sm font-medium transition-colors duration-150 ${
+                  className={`text-xs font-medium uppercase tracking-[0.05em] transition-colors duration-150 ${
                     isActive
-                      ? "text-[#1A1918]"
-                      : "text-[#6B6963] hover:text-[#1A1918]"
+                      ? "text-white"
+                      : "text-[#8F8F8F] hover:text-white"
                   }`}
                 >
                   {link.label}
@@ -68,38 +64,35 @@ export default function Navbar() {
             })}
           </div>
 
-          {/* Desktop CTA */}
+          {/* Right Button — Sharp, zero border-radius button */}
           <Link
             href="#contact"
-            className="hidden md:inline-flex items-center gap-2 px-5 py-2 bg-[#C1432E] text-white text-sm font-medium rounded-lg hover:bg-[#A93826] transition-all duration-150"
+            className="hidden md:inline-flex items-center justify-center px-4 py-2 border border-[#262626] text-white text-xs font-mono uppercase tracking-wider hover:border-[#06B6D4] hover:shadow-[0_0_15px_rgba(6,182,212,0.15)] transition-all duration-150 bg-transparent"
           >
-            Start a build
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
+            Initialize Project ↗
           </Link>
 
           {/* Mobile Hamburger */}
           <button
             id="mobile-menu-button"
             onClick={() => setIsMobileOpen(!isMobileOpen)}
-            className="md:hidden relative w-10 h-10 flex items-center justify-center rounded-lg hover:bg-[#E5E3DC]/50 transition-colors"
+            className="md:hidden w-8 h-8 flex items-center justify-center border border-[#262626] hover:bg-[#161616]"
             aria-label="Toggle menu"
           >
-            <div className="w-5 flex flex-col gap-1.5">
+            <div className="w-4 flex flex-col gap-1">
               <span
-                className={`block h-[1.5px] bg-[#1A1918] rounded-full transition-all duration-300 ${
-                  isMobileOpen ? "rotate-45 translate-y-[7.5px]" : ""
+                className={`block h-[1px] bg-white transition-all duration-300 ${
+                  isMobileOpen ? "rotate-45 translate-y-[5px]" : ""
                 }`}
               />
               <span
-                className={`block h-[1.5px] bg-[#1A1918] rounded-full transition-all duration-300 ${
+                className={`block h-[1px] bg-white transition-all duration-300 ${
                   isMobileOpen ? "opacity-0 scale-0" : ""
                 }`}
               />
               <span
-                className={`block h-[1.5px] bg-[#1A1918] rounded-full transition-all duration-300 ${
-                  isMobileOpen ? "-rotate-45 -translate-y-[4.5px]" : ""
+                className={`block h-[1px] bg-white transition-all duration-300 ${
+                  isMobileOpen ? "-rotate-45 -translate-y-[5px]" : ""
                 }`}
               />
             </div>
@@ -112,24 +105,24 @@ export default function Navbar() {
         {isMobileOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "calc(100dvh - 4rem)" }}
+            animate={{ opacity: 1, height: "calc(100dvh - 5rem)" }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.35, ease: "easeInOut" }}
-            className="md:hidden fixed top-16 left-0 right-0 bg-[#F6F5F0] z-40 overflow-y-auto border-t border-[#E5E3DC]"
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="md:hidden fixed top-20 left-4 right-4 bg-[#0A0A0A] border border-[#262626] z-40 overflow-y-auto"
           >
-            <div className="flex flex-col items-center justify-center h-full gap-1 px-6 py-10">
+            <div className="flex flex-col items-center justify-center h-full gap-2 px-6 py-10">
               {NAV_LINKS.map((link, i) => (
                 <motion.div
                   key={link.href}
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.06, duration: 0.3 }}
+                  transition={{ delay: i * 0.05, duration: 0.2 }}
                   className="w-full max-w-sm"
                 >
                   <Link
                     href={link.href}
                     onClick={() => setIsMobileOpen(false)}
-                    className="block px-6 py-4 text-center text-lg font-medium text-[#1A1918] rounded-lg hover:bg-[#E5E3DC]/50 transition-all duration-150"
+                    className="block px-6 py-4 text-center text-sm font-mono uppercase tracking-wider text-[#8F8F8F] hover:text-white hover:bg-[#161616]"
                   >
                     {link.label}
                   </Link>
@@ -138,15 +131,15 @@ export default function Navbar() {
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3, duration: 0.3 }}
+                transition={{ delay: 0.25, duration: 0.2 }}
                 className="mt-6 w-full max-w-sm"
               >
                 <Link
                   href="#contact"
                   onClick={() => setIsMobileOpen(false)}
-                  className="block px-6 py-4 text-center bg-[#C1432E] text-white font-medium rounded-lg hover:bg-[#A93826] transition-all duration-150"
+                  className="block px-6 py-4 text-center border border-[#262626] text-white font-mono uppercase tracking-wider hover:border-[#06B6D4]"
                 >
-                  Start a build →
+                  Initialize Project ↗
                 </Link>
               </motion.div>
             </div>

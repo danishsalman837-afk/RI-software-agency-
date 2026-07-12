@@ -1,27 +1,23 @@
 @import "tailwindcss";
 
 @theme inline {
-  /* ── Warm Editorial Palette ── */
-  --color-background: #F6F5F0;
-  --color-foreground: #1A1918;
-  --color-primary: #C1432E;
-  --color-primary-hover: #A93826;
-  --color-surface: #FFFFFF;
-  --color-surface-dark: #121110;
-  --color-surface-warm: #EFEDE6;
-  --color-border: #E5E3DC;
-  --color-border-dark: #2A2825;
-  --color-muted: #6B6963;
-  --color-muted-light: #9C9890;
+  /* ── Dark Bento Palette ── */
+  --color-background: #0A0A0A;
+  --color-foreground: #FFFFFF;
+  --color-primary: #06B6D4; /* Electric Cyan accent */
+  --color-primary-hover: #0891B2;
+  --color-surface: #161616; /* Graphite Surface */
+  --color-border: #262626; /* Razor border */
+  --color-muted: #8F8F8F; /* Muted silver-gray */
 
   /* ── Typography ── */
   --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
-  --font-serif: var(--font-instrument-serif), "Georgia", "Times New Roman", serif;
   --font-mono: var(--font-jetbrains-mono), "SF Mono", "Fira Code", monospace;
 }
 
 * {
   box-sizing: border-box;
+  border-radius: 0 !important; /* Strict zero border-radius requirement */
 }
 
 html {
@@ -37,9 +33,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* ── Scrollbar ── */
+/* ── Custom Scrollbar ── */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -47,8 +43,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-muted-light);
-  border-radius: 4px;
+  background: var(--color-border);
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -57,79 +52,39 @@ body {
 
 /* ── Selection ── */
 ::selection {
-  background: rgba(193, 67, 46, 0.15);
+  background: rgba(6, 182, 212, 0.2);
   color: var(--color-foreground);
 }
 
-/* ── Focus outlines — WCAG AA ── */
+/* ── Focus ── */
 :focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
+  outline: 1px solid var(--color-primary);
+  outline-offset: 1px;
 }
 
-/* ── Noise texture overlay ── */
-.noise-overlay::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  opacity: 0.025;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 1;
-}
-
-/* ── Editorial Micro-label ── */
-.micro-label {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--color-muted);
-}
-
-/* ── Serif Display ── */
-.serif-display {
-  font-family: var(--font-serif);
-  font-weight: 400;
-  line-height: 1.1;
-}
-
-/* ── Grid line divider ── */
-.grid-line {
-  border-color: var(--color-border);
-}
-
-/* ── Dark section utilities ── */
-.section-dark {
-  background-color: var(--color-surface-dark);
-  color: #F6F5F0;
-}
-
-.section-dark .micro-label {
-  color: #9C9890;
-}
-
-/* ── Smooth hover transitions ── */
-a, button {
-  transition: color 150ms ease-in-out, background-color 150ms ease-in-out, border-color 150ms ease-in-out, transform 150ms ease-in-out, box-shadow 150ms ease-in-out;
-}
-
-/* ── Stat dividers ── */
-.stat-divider {
-  position: relative;
-}
-
-.stat-divider::after {
-  content: '';
-  position: absolute;
-  right: 0;
-  top: 10%;
-  height: 80%;
-  width: 1px;
+/* ── Bento Layout Helpers ── */
+.bento-grid {
+  display: grid;
+  gap: 1px;
   background-color: var(--color-border);
 }
 
-.stat-divider:last-child::after {
-  display: none;
+.bento-card {
+  background-color: var(--color-surface);
+  padding: 2rem;
+  transition: background-color 150ms ease-in-out;
+}
+
+.bento-card:hover {
+  background-color: #1A1A1A;
+}
+
+/* ── Hairline borders ── */
+.border-hairline {
+  border: 1px solid var(--color-border);
+}
+
+/* ── Custom Micro-interactions ── */
+a, button, select, input, textarea {
+  transition: all 150ms ease-in-out;
 }
